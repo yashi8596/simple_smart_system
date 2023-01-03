@@ -1,1 +1,17 @@
-<h4>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</h4>
+<nav class="container mx-auto">
+  <ul class="row py-auto">
+    <% if current_employee %>
+      <li style="list-style: none;" class="col-4 mx-auto">
+        <%= link_to sessions_path, method: :delete do %>
+          <button type="button" class="btn btn-secondary">ログアウト</button>
+        <% end %>
+      </li>
+    <% else %>
+      <li style="list-style: none;" class="col-4 mx-auto">
+        <%= link_to new_sessions_path do %>
+          <button type="button" class="btn btn-secondary">ログイン</button>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</nav>
