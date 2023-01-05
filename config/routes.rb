@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "homes#top"
+    resource :sessions, only:[:new, :create, :destroy]
   end
 end
