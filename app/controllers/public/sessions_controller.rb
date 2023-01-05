@@ -14,16 +14,19 @@ class Public::SessionsController < Public::Base
       employee = Employee.find_by("employee_number = ?", @form.employee_number.downcase)
     end
 
-    if employee
+    if Public::Authenticator.new(employee).authenticate(@form.password)
       session[:employee_id] = employee.id
+      flash.notice = "ログインしました。"
       redirect_to :root
     else
+      flash.now.alert = "従業員番号またはパスワードが正しくありません。"
       render action: "new"
     end
   end
 
   def destroy
     session.delete(:employee_id)
-    redirect_to :root
+    flash.notice = "ログアウトしました。"
+    redirect_to new_sessions_path
   end
 end
