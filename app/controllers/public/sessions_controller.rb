@@ -19,12 +19,10 @@ class Public::SessionsController < Public::Base
         # suspendedがtrueの場合に表示されるフラッシュメッセージ
         flash.now.alert = "アカウントが停止されています。"
         render action: "new"
-
       else
         session[:employee_id] = employee.id
         flash.notice = "ログインしました。"
         redirect_to :root
-
       end
     else
       flash.now.alert = "従業員番号またはパスワードが正しくありません。"
