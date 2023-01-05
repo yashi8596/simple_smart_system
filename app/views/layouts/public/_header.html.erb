@@ -1,17 +1,22 @@
-<nav class="container mx-auto">
+<nav class="container mx-auto my-3">
   <ul class="row py-auto">
+
     <% if current_employee %>
-      <li style="list-style: none;" class="col-4 mx-auto">
-        <%= link_to sessions_path, method: :delete do %>
-          <button type="button" class="btn btn-secondary">ログアウト</button>
+
+      <button type="button" class="btn btn-secondary col-4 mx-auto py-1">
+        <%= link_to sessions_path, class:"y-0 mx-auto", method: :delete do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">ログアウト</li>
         <% end %>
-      </li>
+      </button>
+
     <% else %>
-      <li style="list-style: none;" class="col-4 mx-auto">
-        <%= link_to new_sessions_path do %>
-          <button type="button" class="btn btn-secondary">ログイン</button>
+
+      <button type="button" class="btn btn-secondary col-4 mx-auto py-1">
+        <%= link_to new_sessions_path, class:"y-0 mx-auto" do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">ログイン</li>
         <% end %>
-      </li>
+      </button>
+
     <% end %>
   </ul>
 </nav>
