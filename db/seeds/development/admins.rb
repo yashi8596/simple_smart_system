@@ -1,5 +1,5 @@
 Admin.create!(
-  password: "password",
-  email: "admin@exam.com",
-  employee_number: "1234567"
+  employee_number: "3807604",
+  password: "shintaro",
+  email: "yamaguchi@exam.com",
 )
