@@ -1,0 +1,54 @@
+<div class="container mx-auto">
+
+  <div class="row my-3 mx-auto">
+    <h4 class="col-12 text-center mx-auto">従業員新規登録画面</h4>
+  </div>
+
+  <%= form_with model: @employee, url: admin_employees_path, method: :post do |f| %>
+
+    <div class="row py-3 col-12 mx-auto border border-dark rounded">
+      <table class="table table-borderless">
+
+        <tr>
+          <th class="ml-auto"><%= f.label "従業員番号" %></th>
+          <td class="mr-auto"><%= f.text_field :employee_number, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "従業員名" %></th>
+          <td class="mx-auto row ">
+            <%= f.label "姓", class:"col-1 p-0 text-center" %>
+            <%= f.text_field :last_name, class:"col-5 form-control" %>
+            <%= f.label "名", class:"col-1 p-0 text-center" %>
+            <%= f.text_field :first_name, class:"col-5 form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "従業員名(カナ)" %></th>
+          <td class="mx-auto row ">
+            <%= f.label "セイ", class:"col-1 p-0 text-center" %>
+            <%= f.text_field :last_name_kana, class:"col-5 form-control" %>
+            <%= f.label "メイ", class:"col-1 p-0 text-center" %>
+            <%= f.text_field :first_name_kana, class:"col-5 form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "住所" %></th>
+          <td class="mr-auto"><%= f.text_field :address, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "電話番号" %></th>
+          <td class="mr-auto"><%= f.text_field :telephone_number, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "メールアドレス" %></th>
+          <td class="mr-auto"><%= f.text_field :email, class:"form-control" %></td>
+        </tr>
+      </table>
+
+      <div class="row py-2 col-5 mx-auto">
+        <%= f.submit "新規登録する", class: "btn btn-primary col-12" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
