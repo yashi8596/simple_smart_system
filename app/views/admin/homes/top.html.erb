@@ -1,2 +1,43 @@
-<h1>管理者トップページ</h1>
+<div class="container mx-auto">
 
+  <div class="row my-3 mx-auto">
+    <h4 class="col-12 text-center mx-auto">管理者用従業員データベース画面</h4>
+  </div>
+
+  <div class="row py-3 col-12 mx-auto">
+    <%= link_to "従業員新規登録", new_admin_employee_path, class:"my-1 col-4 btn btn-lg btn-primary" %>
+    <p class="col-4">
+      従業員検索<br>
+      （従業員名もしくは従業員番号を入力）
+    </p>
+    <div class="col-4"></div>
+  </div>
+
+  <div class="row py-3 col-12 mx-auto">
+
+    <h5 class="row mx-auto text-center py-2">従業員一覧</h5>
+
+    <table class="table table-hovered">
+
+      <tr>
+        <th>従業員番号</th>
+        <th>従業員氏名</th>
+        <th>フリガナ</th>
+        <th>メールアドレス</th>
+        <th>停止フラグ</th>
+        <th></th>
+      </tr>
+
+      <% @employees.each do |e| %>
+        <tr>
+          <td><%= e.employee_number %></td>
+          <td><%= e.last_name %> <%= e.first_name %></td>
+          <td><%= e.last_name_kana %> <%= e.first_name_kana %></td>
+          <td><%= e.email %></td>
+          <td><%= e.suspended?  ?  raw("&#x2611") : raw("&#x2610") %></td>
+          <td><%= link_to "編集する", edit_admin_employee_path(e.id), class:"btn btn-success col-12 mx-auto py-1" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
