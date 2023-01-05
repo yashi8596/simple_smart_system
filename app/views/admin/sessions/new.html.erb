@@ -1,0 +1,29 @@
+<div class="container mx-auto">
+
+  <div class="row my-3 mx-auto">
+    <h4 class="col-4 text-center mx-auto">管理者ログイン画面</h4>
+  </div>
+
+  <%= form_with model: @form, url: admin_sessions_path, method: :post do |f| %>
+
+    <div class="row py-3 col-7 mx-auto">
+      <table class="table table-borderless">
+
+        <tr>
+          <th class="ml-auto"><%= f.label "メールアドレス" %></th>
+          <td class="mr-auto"><%= f.text_field :email, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "パスワード" %></th>
+          <td class="mr-auto"><%= f.password_field :password, class:"form-control" %></td>
+        </tr>
+
+      </table>
+
+      <div class="row py-2 mx-auto">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
