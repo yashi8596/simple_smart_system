@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     resource :sessions, only:[:new, :create, :destroy]
+    resource :employees, only:[:edit, :update]
+    resources :requests, only:[:new, :create, :show, :update]
+    get "requests/:id/cancel" => "requests#cancel", as: "cancel_request_path" #申請取り消し用
   end
 
   namespace :admin do
     root "homes#top"
     resource :sessions, only:[:new, :create, :destroy]
+    resources :employees, except:[:index]
   end
 end
