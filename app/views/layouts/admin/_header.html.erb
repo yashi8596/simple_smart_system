@@ -1,1 +1,29 @@
-<h4>あああああああああああああああああああああ</h4>
+<nav class="container mx-auto my-3">
+  <ul class="row py-auto">
+
+    <% if current_admin %>
+
+      <button type="button" class="btn btn-secondary col-4 mx-auto py-1">
+        <%= link_to admin_sessions_path, class:"y-0 mx-auto", method: :delete do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">ログアウト</li>
+        <% end %>
+      </button>
+
+    <% else %>
+
+      <button type="button" class="btn btn-secondary col-4 mx-auto py-1">
+        <%= link_to new_admin_sessions_path, class:"y-0 mx-auto" do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">ログイン</li>
+        <% end %>
+      </button>
+
+    <% end %>
+  </ul>
+</nav>
+
+<div class="container mx-auto mb-3">
+  <div class="row">
+    <%= content_tag(:span, flash.notice, class: "col-12 notice bg-info text-center text-white py-3 rounded") if flash.notice %>
+    <%= content_tag(:span, flash.alert, class: "col-12 alert bg-danger text-center text-white") if flash.alert %>
+  </div>
+</div>
