@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_05_043012) do
+ActiveRecord::Schema.define(version: 2023_01_05_075032) do
 
   create_table "admins", force: :cascade do |t|
-    t.string "hashed_password", null: false
     t.string "email", null: false
     t.boolean "suspended", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "employee_number", null: false
+    t.string "hashed_password"
     t.index "LOWER(email)", name: "index_admins_on_LOWER_email", unique: true
   end
 
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2023_01_05_043012) do
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.string "hashed_password", null: false
     t.string "address", null: false
     t.integer "telephone_number", null: false
     t.string "email", null: false
@@ -38,9 +37,21 @@ ActiveRecord::Schema.define(version: 2023_01_05_043012) do
     t.boolean "suspended", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "hashed_password"
     t.index "lower(email)", name: "index_employees_on_lower_email", unique: true
     t.index ["employee_number"], name: "index_employees_on_employee_number", unique: true
     t.index ["last_name_kana", "first_name_kana"], name: "index_employees_on_last_name_kana_and_first_name_kana"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.date "preferred_date", null: false
+    t.integer "reason_for_request", default: 0, null: false
+    t.boolean "permitted", default: true, null: false
+    t.boolean "canceled", default: false, null: false
+    t.integer "reason_for_cancel", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
