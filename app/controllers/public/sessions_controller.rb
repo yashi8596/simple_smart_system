@@ -23,5 +23,7 @@ class Public::SessionsController < Public::Base
   end
 
   def destroy
+    session.delete(:employee_id)
+    redirect_to :root
   end
 end
