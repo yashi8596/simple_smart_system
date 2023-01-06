@@ -1,4 +1,4 @@
-class Admin::RequestsController < ApplicationController
+class Admin::RequestsController < Admin::Base
   def index
   end
 

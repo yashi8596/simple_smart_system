@@ -1,0 +1,52 @@
+<div class="container mx-auto">
+
+  <div class="row my-3 mx-auto">
+    <h4 class="col-12 text-center mx-auto">従業員給与明細画面</h4>
+  </div>
+
+  <%= form_with model: @salary, url: admin_salaries_path, method: :post do |f| %>
+
+    <div class="row py-3 col-11 mx-auto border border-dark rounded">
+      <table class="table table-borderless">
+
+        <tr>
+          <th class="ml-auto"><%= f.label "従業員番号" %></th>
+          <td class="mr-auto"><%= f.text_field :employee_number, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "稼働日数" %></th>
+          <td class="mr-auto"><%= f.text_field :workday, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "欠勤日数" %></th>
+          <td class="mr-auto"><%= f.text_field :absent, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "有給消化数" %></th>
+          <td class="mr-auto"><%= f.text_field :used_paid_leave, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "時間単価" %></th>
+          <td class="mr-auto"><%= f.text_field :wage, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "労働時間" %></th>
+          <td class="mr-auto"><%= f.text_field :working_hour, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "残業時間" %></th>
+          <td class="mr-auto"><%= f.text_field :extra_hour, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "深夜時間" %></th>
+          <td class="mr-auto"><%= f.text_field :midnight_hour, class:"form-control" %></td>
+        </tr>
+      </table>
+
+      <div class="row py-2 col-11 mx-auto">
+        <%= f.submit "登録する", class: "btn btn-success col-5 mx-auto" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>

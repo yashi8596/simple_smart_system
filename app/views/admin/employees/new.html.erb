@@ -6,7 +6,7 @@
 
   <%= form_with model: @employee, url: admin_employees_path, method: :post do |f| %>
 
-    <div class="row py-3 col-12 mx-auto border border-dark rounded">
+    <div class="row py-3 col-11 mx-auto border border-dark rounded">
       <table class="table table-borderless">
 
         <tr>
@@ -42,6 +42,10 @@
         <tr>
           <th class="ml-auto"><%= f.label "メールアドレス" %></th>
           <td class="mr-auto"><%= f.text_field :email, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "入社日" %></th>
+          <td class="mr-auto"><%= f.date_field :start_date, class:"form-control" %></td>
         </tr>
       </table>
 
