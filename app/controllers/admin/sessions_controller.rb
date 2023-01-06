@@ -1,4 +1,6 @@
 class Admin::SessionsController < Admin::Base
+  skip_before_action :authorize #管理者以外のアクセス制御
+
   def new
     if current_admin
       redirect_to :admin_root

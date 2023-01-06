@@ -1,10 +1,9 @@
 class Admin::Base < ApplicationController
   before_action :authorize #管理者以外のアクセス制御
   layout 'admin'
-  
+
   private
-  
-  def authorize #管理者以外のアクセス制御
+  def authorize
     unless current_admin
       flash.alert = "管理者としてログインしてください。"
       redirect_to new_admin_sessions_path
@@ -18,4 +17,5 @@ class Admin::Base < ApplicationController
   end
 
   helper_method :current_admin
+
 end
