@@ -11,7 +11,7 @@ class Public::SessionsController < Public::Base
   end
 
   def create
-    @form = Public::LoginForm.new(params[:public_login_form])
+    @form = Public::LoginForm.new(login_form_params)
     if @form.employee_number.present?
       employee = Employee.find_by("employee_number = ?", @form.employee_number.downcase)
     end
@@ -36,5 +36,10 @@ class Public::SessionsController < Public::Base
     session.delete(:employee_id)
     flash.notice = "ログアウトしました。"
     redirect_to new_sessions_path
+  end
+
+  private
+  def login_form_params
+    params.require(:public_login_form).permit(:employee_number, :password)
   end
 end
