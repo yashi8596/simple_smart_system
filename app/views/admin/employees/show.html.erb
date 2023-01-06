@@ -1,0 +1,63 @@
+<div class="container mx-auto">
+
+  <div class="row my-3 mx-auto">
+    <h4 class="col-12 text-center mx-auto">従業員詳細画面</h4>
+  </div>
+
+  <div class="row py-3 col-11 mx-auto border border-dark rounded">
+    <table class="table table-borderless">
+
+      <tr>
+        <th class="ml-auto col-5">従業員番号</th>
+        <td class="mr-auto col-5"><%= @employee.employee_number %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">従業員名</th>
+        <td class="mx-auto row">
+          <%= @employee.last_name %> <%= @employee.first_name %>
+        </td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">従業員名(カナ)</th>
+        <td class="mx-auto row">
+          <%= @employee.last_name_kana %> <%= @employee.first_name_kana %>
+        </td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">住所</th>
+        <td class="mr-auto col-5"><%= @employee.address %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">電話番号</th>
+        <td class="mr-auto col-5"><%= @employee.telephone_number %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">メールアドレス</th>
+        <td class="mr-auto col-5"><%= @employee.email %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">入社日</th>
+        <td class="mr-auto col-5"><%= @employee.start_date %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">退職日</th>
+        <td class="mr-auto col-5">
+          <% if @employee.end_date != nil %>
+            <%= @employee.end_date %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row py-2 col-11 mx-auto">
+      <%= link_to "編集する", edit_admin_employee_path(@employee.id), class:"col-5 btn btn-success mx-auto" %>
+      <%= link_to "削除する", admin_confirm_path(@employee.id), class:"col-5 btn btn-danger mx-auto" %>
+    </div>
+
+    <div class="row py-2 col-11 mx-auto">
+      <%= link_to "給与明細一覧", admin_salaries_path, class:"col-5 btn btn-success mx-auto" %>
+      <%= link_to "給与明細を作成する", new_admin_salary_path, class:"col-5 btn btn-primary mx-auto" %>
+    </div>
+
+  </div>
+</div>

@@ -1,4 +1,6 @@
 class Employee < ApplicationRecord
+  has_many :salaries, dependent: :destroy
+  has_many :requests, dependent: :destroy
 
   def password=(raw_password)
     if raw_password.kind_of?(String)

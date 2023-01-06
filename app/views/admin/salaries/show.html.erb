@@ -1,0 +1,51 @@
+<div class="container mx-auto">
+
+  <div class="row my-3 mx-auto">
+    <h4 class="col-12 text-center mx-auto"><%= @salary.employee.last_name %>さんの給与詳細画面</h4>
+  </div>
+
+  <div class="row py-3 col-11 mx-auto border border-dark rounded">
+    <table class="table table-hovered">
+
+      <tr>
+        <th class="ml-auto col-5">従業員番号</th>
+        <td class="mr-auto col-5"><%= @salary.employee_number %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">従業員名</th>
+        <td class="mx-auto row">
+          <%= @salary.employee.last_name %> <%= @salary.employee.first_name %>
+        </td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">時間単価・出勤日数・欠勤日数</th>
+        <td class="mx-auto col-2"><%= @salary.wage %></td>
+        <td class="mx-auto col-2"><%= @salary.workday - @salary.absent %></td>
+        <td class="mr-auto col-2"><%= @salary.absent %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">基本給</th>
+        <td class="mr-auto col-5"><%= @salary.wage * @salary.working_hour %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">残業手当</th>
+        <td class="mr-auto col-5"><%= @salary.wage * @salary.extra_hour %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">深夜手当</th>
+        <td class="mr-auto col-5"><%= @salary.wage * @salary.midnight_hour %></td>
+      </tr>
+
+    </table>
+
+    <div class="row py-2 col-11 mx-auto">
+      <%= link_to "編集する", edit_admin_salary_path(@salary.id), class:"col-5 btn btn-success mx-auto" %>
+      <%= link_to "従業員詳細に戻る", admin_employee_path(@salary.employee_number), class:"col-5 btn btn-danger mx-auto" %>
+    </div>
+
+    <div class="row py-2 col-11 mx-auto">
+      <%= link_to "給与明細を作成する", new_admin_salary_path, class:"col-5 btn btn-primary mx-auto" %>
+    </div>
+
+  </div>
+</div>

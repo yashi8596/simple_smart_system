@@ -22,7 +22,6 @@
       <tr>
         <th>従業員番号</th>
         <th>従業員氏名</th>
-        <th>フリガナ</th>
         <th>メールアドレス</th>
         <th>停止フラグ</th>
         <th></th>
@@ -32,10 +31,18 @@
         <tr>
           <td><%= e.employee_number %></td>
           <td><%= e.last_name %> <%= e.first_name %></td>
-          <td><%= e.last_name_kana %> <%= e.first_name_kana %></td>
           <td><%= e.email %></td>
-          <td><%= e.suspended?  ?  raw("&#x2611") : raw("&#x2610") %></td>
-          <td><%= link_to "編集する", edit_admin_employee_path(e.id), class:"btn btn-success col-12 mx-auto py-1" %></td>
+          <td>
+            <% if e.suspended == false %>
+              <label class="text-success"><strong>無効</strong></label>
+            <% else %>
+              <label class="text-danger"><strong>有効</strong></label>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "詳細", admin_employee_path(e.id), class:"btn btn-info col-5 mx-auto py-1" %>
+            <%= link_to "編集", edit_admin_employee_path(e.id), class:"btn btn-success col-5 mx-auto py-1" %>
+            </td>
         </tr>
       <% end %>
     </table>
