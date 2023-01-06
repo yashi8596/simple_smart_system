@@ -1,4 +1,6 @@
 class Public::SessionsController < Public::Base
+  skip_before_action :login
+
   def new
     if current_employee
       redirect_to :root
