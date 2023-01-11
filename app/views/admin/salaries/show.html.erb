@@ -13,34 +13,38 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">従業員名</th>
-        <td class="mx-auto row">
+        <td class="mx-auto col-5">
           <%= @salary.employee.last_name %> <%= @salary.employee.first_name %>
         </td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">時間単価・出勤日数・欠勤日数</th>
-        <td class="mx-auto col-2"><%= @salary.wage %></td>
-        <td class="mx-auto col-2"><%= @salary.workday - @salary.absent %></td>
-        <td class="mr-auto col-2"><%= @salary.absent %></td>
+        <th class="ml-auto col-5">出勤日数・欠勤日数・有休消化日数</th>
+        <td class="mx-auto col-2"><%= @salary.total_workday %></td>
+        <td class="col-2"><%= @salary.absent %></td>
+        <td class="mr-auto col-2"><%= @salary.used_paid_leave %></td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">基本給</th>
-        <td class="mr-auto col-5"><%= @salary.wage * @salary.working_hour %></td>
+        <th class="ml-auto col-5">時間単価</th>
+        <td class="mr-auto col-5"><%= @salary.wage %></td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">残業手当</th>
-        <td class="mr-auto col-5"><%= @salary.wage * @salary.extra_hour %></td>
+        <th class="ml-auto col-5">労働時間</th>
+        <td class="mr-auto col-5"><%= @salary.total_hour %></td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">深夜手当</th>
-        <td class="mr-auto col-5"><%= @salary.wage * @salary.midnight_hour %></td>
+        <th class="ml-auto col-5">残業時間</th>
+        <td class="mr-auto col-5"><%= @salary.extra_hour %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">深夜時間</th>
+        <td class="mr-auto col-5"><%= @salary.midnight_hour %></td>
       </tr>
 
     </table>
 
     <div class="row py-2 col-11 mx-auto">
       <%= link_to "編集する", edit_admin_salary_path(@salary.id), class:"col-5 btn btn-success mx-auto" %>
-      <%= link_to "従業員詳細に戻る", admin_employee_path(@salary.employee_number), class:"col-5 btn btn-danger mx-auto" %>
+      <%= link_to "従業員詳細に戻る", admin_employee_path(@salary.employee_number), class:"col-5 btn btn-warning text-white mx-auto" %>
     </div>
 
     <div class="row py-2 col-11 mx-auto">

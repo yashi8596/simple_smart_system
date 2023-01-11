@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resource :sessions, only:[:new, :create, :destroy]
     resource :employees, only:[:edit, :update]
-    resources :requests, only:[:new, :create, :show, :update]
+    resources :leave_requests, only:[:new, :create, :show, :update]
     get "requests/:id/cancel" => "requests#cancel", as: "cancel_request" #申請取り消し用
   end
 
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resource :sessions, only:[:new, :create, :destroy]
     resources :employees, except:[:index]
     get "employees/:id/confirm" => "employees#confirm", as: "confirm" #従業員データ物理削除時の確認用画面
-    resources :salaries, except:[:destroy]
+    resources :salaries, except:[:new, :destroy]
+    get "salaries/:employee_number/new" => "salaries#new", as: "new_salary"
+    resources :leave_requests, except:[:new, :create]
   end
 end

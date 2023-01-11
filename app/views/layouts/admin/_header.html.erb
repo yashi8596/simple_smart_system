@@ -1,6 +1,8 @@
 <div class="container mx-auto mb-3">
   <div class="row">
-    <h2 class="my-2 py-3 col-3 border border-dark mx-auto text-center">LOGO</h2>
+    <%= link_to new_admin_sessions_path, class:"my-2 py-3 col-3 border border-dark mx-auto " do %>
+      <h2 class="text-center">LOGO</h2>
+    <% end %>
   </div>
 </div>
 
@@ -8,27 +10,23 @@
   <ul class="row py-auto px-0">
 
     <% if current_admin %>
-
-      <button type="button" class="btn btn-secondary col-4 mx-auto py-1">
+      <button type="button" class="btn btn-secondary col-3 mx-auto py-1">
         <%= link_to admin_root_path, class:"y-0 mx-auto" do %>
           <li style="list-style: none;" class="mx-auto text-center text-white">従業員一覧</li>
         <% end %>
       </button>
 
-      <button type="button" class="btn btn-secondary col-4 mx-auto py-1">
+      <button type="button" class="btn btn-secondary col-3 mx-auto py-1">
+        <%= link_to admin_leave_requests_path, class:"y-0 mx-auto" do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">有給申請一覧</li>
+        <% end %>
+      </button>
+
+      <button type="button" class="btn btn-secondary col-3 mx-auto py-1">
         <%= link_to admin_sessions_path, class:"y-0 mx-auto", method: :delete do %>
           <li style="list-style: none;" class="mx-auto text-center text-white">ログアウト</li>
         <% end %>
       </button>
-
-    <% else %>
-
-      <button type="button" class="btn btn-secondary col-4 mx-auto py-1">
-        <%= link_to new_admin_sessions_path, class:"y-0 mx-auto" do %>
-          <li style="list-style: none;" class="mx-auto text-center text-white">ログイン</li>
-        <% end %>
-      </button>
-
     <% end %>
   </ul>
 </nav>
