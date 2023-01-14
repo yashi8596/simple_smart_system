@@ -11,9 +11,14 @@ class Public::LeaveRequestsController < ApplicationController
     else
       flash.now.alert = "入力項目に誤りがあります。"
       render action: "new"
-      
+    end
   end
 
   def show
+  end
+  
+  private
+  def lr_params
+    params.require(:leave_requests).permit(:employee_number, :preferred_date, :reason_for_request)
   end
 end

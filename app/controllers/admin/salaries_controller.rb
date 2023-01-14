@@ -5,7 +5,7 @@ class Admin::SalariesController < Admin::Base
 
   def create
     @salary = Salary.new(salary_params)
-    if @salary.save
+    if @salary.save!
       flash.notice = "給与明細の登録が完了しました。"
       redirect_to admin_salary_path(@salary.id)
     else
@@ -14,14 +14,14 @@ class Admin::SalariesController < Admin::Base
     end
   end
 
-  #def index
-    #salaries = Salary.where("created_at > ?", Date.current.beginning_of_month).where("created_at < ?", Date.current.end_of_month)
-    #salaries = Salary.where(created_at: Date.current.all_month)
-   # @employees = Employee.where.missing(:salaries)
-  #end
+  def index
+    #今月作成したもののみ表示
+    @salaries = Salary.where(created_at: Time.current.all_month)
+  end
 
   def show
     @salary = Salary.find(params[:id])
+    @employee = Employee.find_by(employee_number: @salary.employee_number)
   end
 
   def edit
@@ -42,9 +42,9 @@ class Admin::SalariesController < Admin::Base
   private
   def salary_params
     params.require(:salary).permit(
-      :employee_number, :wage, :total_hour, :extra_hour, :midnight_hour,
-      :total_minute, :extra_minute, :midnight_minute,
-      :total_workday, :used_paid_leave, :absent
+      :employee_number, :total_workday, :used_paid_leave, :absent,
+      :wage, :total_hour, :total_minute, :extra_hour, :extra_minute,
+      :midnight_hour, :midnight_minute,
     )
   end
 end

@@ -1,11 +1,11 @@
 <div class="container mx-auto">
 
   <div class="row my-3 mx-auto">
-    <h4 class="col-12 text-center mx-auto"><%= @salary.employee.last_name %>さんの給与詳細画面</h4>
+    <h4 class="col-12 text-center mx-auto"><%= @employee.last_name %><%= @employee.first_name %>さんの給与情報確認画面</h4>
   </div>
 
   <div class="row py-3 col-11 mx-auto border border-dark rounded">
-    <table class="table table-hovered">
+    <table class="table table-hovered mb-0">
 
       <tr>
         <th class="ml-auto col-5">従業員番号</th>
@@ -14,41 +14,47 @@
       <tr>
         <th class="ml-auto col-5">従業員名</th>
         <td class="mx-auto col-5">
-          <%= @salary.employee.last_name %> <%= @salary.employee.first_name %>
+          <%= @employee.last_name %> <%= @employee.first_name %>
         </td>
       </tr>
-      <tr>
-        <th class="ml-auto col-5">出勤日数・欠勤日数・有休消化日数</th>
-        <td class="mx-auto col-2"><%= @salary.total_workday %></td>
-        <td class="col-2"><%= @salary.absent %></td>
-        <td class="mr-auto col-2"><%= @salary.used_paid_leave %></td>
-      </tr>
-      <tr>
-        <th class="ml-auto col-5">時間単価</th>
-        <td class="mr-auto col-5"><%= @salary.wage %></td>
-      </tr>
-      <tr>
-        <th class="ml-auto col-5">労働時間</th>
-        <td class="mr-auto col-5"><%= @salary.total_hour %></td>
-      </tr>
-      <tr>
-        <th class="ml-auto col-5">残業時間</th>
-        <td class="mr-auto col-5"><%= @salary.extra_hour %></td>
-      </tr>
-      <tr>
-        <th class="ml-auto col-5">深夜時間</th>
-        <td class="mr-auto col-5"><%= @salary.midnight_hour %></td>
-      </tr>
+      <table class="col-6 table table-hovered mb-0">
+        <tr>
+          <th class="ml-auto col-2">出勤日数</th>
+          <td class="mx-auto col-2"><%= @salary.total_workday %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto col-2">欠勤日数</th>
+          <td class="mx-auto col-2"><%= @salary.absent %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto col-2">有休消化日数</th>
+          <td class="mx-auto col-2"><%= @salary.used_paid_leave %></td>
+        </tr>
+      </table>
+      <table class="col-6 table table-hovered mb-0">
+        <tr>
+          <th class="ml-auto col-2">時間単価</th>
+          <td class="mr-auto col-2"><%= @salary.wage %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto col-2">労働時間</th>
+          <td class="mr-auto col-2"><%= @salary.total_hour %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto col-2">残業時間</th>
+          <td class="mr-auto col-2"><%= @salary.extra_hour %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto col-2">深夜時間</th>
+          <td class="mr-auto col-2"><%= @salary.midnight_hour %></td>
+        </tr>
+      </table>
 
     </table>
 
     <div class="row py-2 col-11 mx-auto">
       <%= link_to "編集する", edit_admin_salary_path(@salary.id), class:"col-5 btn btn-success mx-auto" %>
       <%= link_to "従業員詳細に戻る", admin_employee_path(@salary.employee_number), class:"col-5 btn btn-warning text-white mx-auto" %>
-    </div>
-
-    <div class="row py-2 col-11 mx-auto">
-      <%= link_to "給与明細を作成する", new_admin_salary_path, class:"col-5 btn btn-primary mx-auto" %>
     </div>
 
   </div>

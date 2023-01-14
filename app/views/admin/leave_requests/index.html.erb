@@ -7,16 +7,16 @@
   <div class="row py-3 col-12 mx-auto">
 
     <h5 class="row mx-auto text-center py-2">新規申請一覧</h5>
-    
-    <% if @leave_requests.count > 0 %>
+
+    <% if @leave_requests.present? %>
       <table class="table table-hovered">
-  
+
         <tr>
           <th>従業員番号</th>
           <th>従業員氏名</th>
           <th>詳細リンク</th>
         </tr>
-  
+
         <% @leave_requests.each do |lr| %>
           <tr>
             <td><%= lr.employee_number %></td>
@@ -29,20 +29,20 @@
       <p class="row mx-auto text-center py-2">現在、新規申請は届いていません。</p>
     <% end %>
   </div>
-  
+
   <div class="row py-3 col-12 mx-auto">
-    
+
     <h5 class="row mx-auto text-center py-2">取消申請一覧</h5>
-    
-    <% if @leave_requests.count > 0 %>
+
+    <% if @leave_requests.present? %>
       <table class="table table-hovered">
-  
+
         <tr>
           <th>従業員番号</th>
           <th>従業員氏名</th>
           <th>詳細リンク</th>
         </tr>
-  
+
         <% @cancel_requests.each do |cr| %>
           <tr>
             <td><%= cr.employee_number %></td>

@@ -1,9 +1,28 @@
 <div class="container mx-auto">
 
   <div class="row my-3 mx-auto">
-    <h4 class="col-4 text-center mx-auto">従業員マイページ</h4>
+    <h4 class="col-4 text-center mx-auto">申請取消画面</h4>
   </div>
 
-  <div class="row py-3 col-8 mx-auto">
+  <div class="row py-3 col-11 mx-auto border border-dark rounded">
+    <table class="table table-borderless">
+
+      <tr>
+        <th class="ml-auto text-center">取得日</th>
+        <td class="mx-auto">
+          <%= @leave_request.preferred_date %>
+        </td>
+      </tr>
+
+    </table>
+
+    <div class="row py-2 col-5 mx-auto">
+      <%= form_with model: @leave_request, url: leave_request_path, method: :patch do |f| %>
+        <%= f.hidden_field :employee_canceled, :value => true %>
+        <%= f.submit "申請を取り消す", class: "btn btn-danger col-12" %>
+      <% end %>
+    </div>
+
   </div>
+
 </div>

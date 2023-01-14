@@ -49,14 +49,14 @@
       </tr>
     </table>
 
-    <div class="row py-2 col-11 mx-auto">
-      <%= link_to "編集する", edit_admin_employee_path(@employee.id), class:"col-5 btn btn-success mx-auto" %>
-      <%= link_to "削除する", admin_confirm_path(@employee.id), class:"col-5 btn btn-danger mx-auto" %>
-    </div>
-
-    <div class="row py-2 col-11 mx-auto">
-      <%= link_to "給与明細一覧", admin_salaries_path, class:"col-5 btn btn-info mx-auto" %>
-      <%= link_to "給与明細を作成する", new_admin_salary_path, class:"col-5 btn btn-primary mx-auto" %>
+    <div class="row py-2 col-12 mx-auto">
+      <%= link_to "編集する", edit_admin_employee_path(@employee.id), class:"col-3 btn btn-success mx-auto" %>
+      <%= link_to "削除する", admin_confirm_path(@employee.id), class:"col-3 btn btn-danger mx-auto" %>
+      <% if @salary.present? %>
+        <%= link_to "給与明細詳細を見る", admin_salary_path(@salary.id), class:"col-3 btn btn-info mx-auto" %>
+      <% else %>
+        <%= link_to "#{@employee.last_name}#{@employee.first_name}さんの給与明細を作成する", new_admin_salary_path, class:"col-3 btn btn-primary mx-auto" %>
+      <% end %>
     </div>
 
   </div>

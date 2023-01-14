@@ -16,6 +16,7 @@ class Admin::EmployeesController < Admin::Base
 
   def show
     @employee = Employee.find(params[:id])
+    @salary = Salary.find_by(employee_number: @employee.employee_number, created_at: Time.current.all_month)
   end
 
   def edit
@@ -35,12 +36,6 @@ class Admin::EmployeesController < Admin::Base
 
   def confirm #アカウント削除専用確認画面
     @employee = Employee.find(params[:id])
-
-    # 従業員の「停止ステータスが有効である」場合のみ、アクセス可能になる
-    #if (@employee.suspended == true)
-      #flash.now.alert = "この従業員の「退職日」と「停止ステータス」が不適切のため、アクセスできません。"
-      #render action: "edit"
-    #end
   end
 
   def destroy #従業員アカウントの削除

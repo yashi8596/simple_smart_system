@@ -10,19 +10,25 @@
   <ul class="row py-auto px-0">
 
     <% if current_admin %>
-      <button type="button" class="btn btn-secondary col-3 mx-auto py-1">
+      <button type="button" class="btn btn-secondary col-5 ml-auto mr-1 my-1 py-1">
         <%= link_to admin_root_path, class:"y-0 mx-auto" do %>
           <li style="list-style: none;" class="mx-auto text-center text-white">従業員一覧</li>
         <% end %>
       </button>
 
-      <button type="button" class="btn btn-secondary col-3 mx-auto py-1">
+      <button type="button" class="btn btn-secondary col-5 ml-1 mr-auto my-1 py-1">
         <%= link_to admin_leave_requests_path, class:"y-0 mx-auto" do %>
           <li style="list-style: none;" class="mx-auto text-center text-white">有給申請一覧</li>
         <% end %>
       </button>
 
-      <button type="button" class="btn btn-secondary col-3 mx-auto py-1">
+      <button type="button" class="btn btn-secondary col-5 ml-auto mr-1 my-1 py-1">
+        <%= link_to admin_salaries_path, class:"y-0 mx-auto" do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">給与明細一覧</li>
+        <% end %>
+      </button>
+
+      <button type="button" class="btn btn-secondary col-5 ml-1 mr-auto my-1 py-1">
         <%= link_to admin_sessions_path, class:"y-0 mx-auto", method: :delete do %>
           <li style="list-style: none;" class="mx-auto text-center text-white">ログアウト</li>
         <% end %>

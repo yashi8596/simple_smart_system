@@ -1,2 +1,44 @@
-<h1>Admin::Requests#show</h1>
-<p>Find me in app/views/admin/requests/show.html.erb</p>
+<div class="container mx-auto">
+
+  <div class="row my-3 mx-auto">
+    <h4 class="col-4 text-center mx-auto">有給申請詳細画面</h4>
+  </div>
+
+  <%= form_with model: @leave_request, url: admin_leave_request_path(@leave_request.id), method: :patch do |f| %>
+
+    <div class="row py-3 col-11 mx-auto border border-dark rounded">
+      <table class="table table-borderless">
+
+        <tr>
+          <th class="ml-auto"><%= f.label "従業員番号" %></th>
+          <td class="mx-auto">
+            <%= @leave_request.employee.id %>
+          </td>
+        </tr>
+      <tr>
+        <th class="ml-auto"><%= f.label "従業員氏名" %></th>
+        <td class="mx-auto row">
+          <%= @leave_request.employee.last_name %> <%= @leave_request.employee.first_name %>
+        </td>
+      </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "取得希望日" %></th>
+          <td class="mx-auto">
+            <%= @leave_request.preferred_date %>
+          </td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "申請理由" %></th>
+          <td class="mx-auto py-3"><%= @leave_request.reason_for_request %></td>
+        </tr>
+
+      </table>
+
+      <div class="row py-2 col-5 mx-auto">
+        <%= f.hidden_field :permitted, :value => true %>
+        <%= f.submit "承認する", class: "btn btn-primary col-12" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
