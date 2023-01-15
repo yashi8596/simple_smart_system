@@ -17,7 +17,7 @@ class Admin::LeaveRequestsController < Admin::Base
         #eventテーブルに記録
         event = EmployeeEvent.new
         event.employee_id = @leave_request.employee_number
-        event.paid_leave = @leave_request.preferred_date
+        event.paid_leave_date = @leave_request.preferred_date
         event.type = "有給"
         event.save(save_params)
 

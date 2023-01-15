@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_11_124748) do
+ActiveRecord::Schema.define(version: 2023_01_07_120733) do
 
   create_table "admins", force: :cascade do |t|
     t.integer "employee_number", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2023_01_11_124748) do
   create_table "employee_events", force: :cascade do |t|
     t.integer "employee_id", null: false
     t.string "type", null: false
-    t.date "paid_leave"
+    t.date "paid_leave_date"
     t.datetime "created_at", null: false
     t.index ["created_at"], name: "index_employee_events_on_created_at"
     t.index ["employee_id", "created_at"], name: "index_employee_events_on_employee_id_and_created_at"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2023_01_11_124748) do
     t.integer "employee_number", null: false
     t.date "preferred_date", null: false
     t.text "reason_for_request", null: false
-    t.boolean "permitted", default: true, null: false
+    t.boolean "permitted"
     t.boolean "canceled", default: false, null: false
     t.boolean "employee_canceled", default: false, null: false
     t.datetime "created_at", precision: 6, null: false

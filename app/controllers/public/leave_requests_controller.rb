@@ -1,4 +1,4 @@
-class Public::LeaveRequestsController < ApplicationController
+class Public::LeaveRequestsController < Public::Base
   def new
     @leave_request = LeaveRequest.new
   end
@@ -15,10 +15,11 @@ class Public::LeaveRequestsController < ApplicationController
   end
 
   def show
+    @leave_request = LeaveRequest.find_by(employee_number: current_employee.employee_number, id: params[:id])
   end
-  
+
   private
   def lr_params
-    params.require(:leave_requests).permit(:employee_number, :preferred_date, :reason_for_request)
+    params.require(:leave_request).permit(:employee_number, :preferred_date, :reason_for_request)
   end
 end

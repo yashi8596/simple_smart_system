@@ -33,19 +33,23 @@
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "住所" %></th>
-          <td class="mr-auto"><%= f.text_field :address, class:"form-control" %></td>
+          <td class="mr-auto"><%= f.text_field :address, required: true, class:"form-control" %></td>
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "電話番号" %></th>
-          <td class="mr-auto"><%= f.text_field :telephone_number, class:"form-control" %></td>
+          <td class="mr-auto"><%= f.text_field :telephone_number, required: true, class:"form-control" %></td>
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "メールアドレス" %></th>
-          <td class="mr-auto"><%= f.text_field :email, class:"form-control" %></td>
+          <td class="mr-auto"><%= f.text_field :email, required: true, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "パスワード" %></th>
+          <td class="mr-auto"><%= f.text_field :password, required: true, class:"form-control" %></td>
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "入社日" %></th>
-          <td class="mr-auto"><%= f.date_field :start_date, class:"form-control" %></td>
+          <td class="mr-auto"><%= f.date_field :start_date, required: true, class:"form-control" %></td>
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "退職日" %></th>

@@ -4,8 +4,9 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resource :sessions, only:[:new, :create, :destroy]
     resource :employees, only:[:edit, :update]
-    resources :leave_requests, only:[:new, :create, :update]
+    resources :leave_requests, only:[:new, :create, :show, :update]
     get "requests/:id/cancel" => "requests#cancel", as: "cancel_request" #申請取り消し用
+    get "salaries/:id" => "salaries#show", as: "salary"
   end
 
   namespace :admin do

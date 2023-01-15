@@ -11,14 +11,16 @@
     <table class="table table-hovered">
 
       <tr>
-        <th class="col-4">従業員番号</th>
+        <th class="col-3">従業員番号</th>
         <th class="col-3">従業員氏名</th>
+        <th class="col-3">作成日時</th>
         <th class="col-3"></th>
       </tr>
 
       <% @salaries.each do |s| %>
         <tr>
-          <td class="col-4"><%= s.employee_number %></td>
+          <td class="col-3"><%= s.employee_number %></td>
+          <td class="col-3"><%= s.employee.last_name %> <%= s.employee.first_name %></td>
           <td class="col-3"><%= s.created_at %></td>
           <td class="col-3">
             <%= link_to "詳細", admin_salary_path(s.id), class:"btn btn-info col-12 mx-auto py-1" %>

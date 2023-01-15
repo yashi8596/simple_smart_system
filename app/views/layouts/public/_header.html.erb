@@ -1,19 +1,37 @@
+<div class="container mx-auto mb-3">
+  <div class="row">
+    <%= link_to new_sessions_path, class:"my-2 py-3 col-3 border border-dark mx-auto " do %>
+      <h2 class="text-center">LOGO</h2>
+    <% end %>
+  </div>
+</div>
+
 <nav class="container mx-auto my-3">
-  <ul class="row py-auto">
+  <ul class="row py-auto px-0">
 
     <% if current_employee %>
 
-      <button type="button" class="btn btn-secondary col-4 mx-auto py-1">
-        <%= link_to sessions_path, class:"y-0 mx-auto", method: :delete do %>
-          <li style="list-style: none;" class="mx-auto text-center text-white">ログアウト</li>
+      <button type="button" class="btn btn-primary col ml-auto mr-1 my-1 py-1">
+        <%= link_to new_leave_request_path, class:"y-0 mx-auto" do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">新規有給申請</li>
         <% end %>
       </button>
 
-    <% else %>
+      <button type="button" class="btn btn-success col mx-1 my-1 py-1">
+        <%= link_to edit_employees_path(current_employee), class:"y-0 mx-auto" do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">登録情報編集</li>
+        <% end %>
+      </button>
 
-      <button type="button" class="btn btn-secondary col-4 mx-auto py-1">
-        <%= link_to new_sessions_path, class:"y-0 mx-auto" do %>
-          <li style="list-style: none;" class="mx-auto text-center text-white">ログイン</li>
+      <button type="button" class="btn btn-info col mx-1 my-1 py-1">
+        <%= link_to salary_path(current_employee), class:"y-0 mx-auto" do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">給与明細一覧</li>
+        <% end %>
+      </button>
+
+      <button type="button" class="btn btn-secondary col ml-1 mr-auto my-1 py-1">
+        <%= link_to sessions_path, class:"y-0 mx-auto", method: :delete do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">ログアウト</li>
         <% end %>
       </button>
 

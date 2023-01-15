@@ -1,8 +1,6 @@
 class Salary < ApplicationRecord
   belongs_to :employee, foreign_key: 'employee_number'
 
-
-  private
   def calc_basic
     total_hour * wage + (total_minute * wage).floor
   end
@@ -16,7 +14,7 @@ class Salary < ApplicationRecord
   end
 
   def calc_leave
-    8 * wage
+    8 * wage * used_paid_leave
   end
 
   def sum_salary

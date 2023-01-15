@@ -11,8 +11,8 @@ class Public::Base < ApplicationController
   end
 
   def current_employee
-    if session[:employee_id]
-      @current_employee ||= Employee.find_by(id: session[:employee_id])
+    if session[:employee_number]
+      @current_employee ||= Employee.find_by(employee_number: session[:employee_number])
     end
   end
 

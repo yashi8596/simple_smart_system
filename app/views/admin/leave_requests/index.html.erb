@@ -8,7 +8,7 @@
 
     <h5 class="row mx-auto text-center py-2">新規申請一覧</h5>
 
-    <% if @leave_requests.present? %>
+    <% if @leave_requests.count != 0 %>
       <table class="table table-hovered">
 
         <tr>
@@ -34,7 +34,7 @@
 
     <h5 class="row mx-auto text-center py-2">取消申請一覧</h5>
 
-    <% if @leave_requests.present? %>
+    <% if @cancel_requests.count != 0 %>
       <table class="table table-hovered">
 
         <tr>

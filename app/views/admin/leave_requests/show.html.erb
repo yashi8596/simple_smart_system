@@ -12,7 +12,7 @@
         <tr>
           <th class="ml-auto"><%= f.label "従業員番号" %></th>
           <td class="mx-auto">
-            <%= @leave_request.employee.id %>
+            <%= @leave_request.employee.employee_number %>
           </td>
         </tr>
       <tr>
@@ -37,6 +37,7 @@
       <div class="row py-2 col-5 mx-auto">
         <%= f.hidden_field :permitted, :value => true %>
         <%= f.submit "承認する", class: "btn btn-primary col-12" %>
+        
       </div>
 
     </div>

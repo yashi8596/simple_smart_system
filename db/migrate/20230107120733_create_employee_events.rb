@@ -5,7 +5,7 @@ class CreateEmployeeEvents < ActiveRecord::Migration[6.1]
       # このテーブルはレコードの更新はしないので、timestampは使わない
       t.references :employee, null: false, index: false, foreign_key: true
       t.string :type, null: false #従業員の記録を区別させるカラム
-      t.date :paid_leave #有給使用日をカレンダーに反映させるためのカラム
+      t.date :paid_leave_date #有給使用日をカレンダーに反映させるためのカラム
       t.datetime :created_at, null: false
     end
 

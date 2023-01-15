@@ -3,7 +3,7 @@ class Public::SessionsController < Public::Base
 
   def new
     if current_employee
-      redirect_to :root
+      redirect_to root_path
     else
       @form = Public::LoginForm.new
       render action: "new"
@@ -22,9 +22,9 @@ class Public::SessionsController < Public::Base
         flash.now.alert = "アカウントが停止されています。"
         render action: "new"
       else
-        session[:employee_id] = employee.id
+        session[:employee_number] = employee.employee_number
         flash.notice = "ログインしました。"
-        redirect_to :root
+        redirect_to root_path
       end
     else
       flash.now.alert = "従業員番号またはパスワードが正しくありません。"
@@ -33,7 +33,7 @@ class Public::SessionsController < Public::Base
   end
 
   def destroy
-    session.delete(:employee_id)
+    session.delete(:employee_number)
     flash.notice = "ログアウトしました。"
     redirect_to new_sessions_path
   end
