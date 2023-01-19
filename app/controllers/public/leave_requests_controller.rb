@@ -18,6 +18,10 @@ class Public::LeaveRequestsController < Public::Base
     @leave_request = LeaveRequest.find_by(employee_number: current_employee.employee_number, id: params[:id])
   end
 
+  def cancel
+    @cancel_request = LeaveRequest.find_by(employee_number: current_employee.employee_number, id: params[:id])
+  end
+
   private
   def lr_params
     params.require(:leave_request).permit(:employee_number, :preferred_date, :reason_for_request)
