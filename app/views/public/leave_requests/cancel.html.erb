@@ -10,14 +10,14 @@
       <tr>
         <th class="ml-auto text-center">取得日</th>
         <td class="mx-auto">
-          <%= @leave_request.preferred_date %>
+          <%= @cancel_request.preferred_date %>
         </td>
       </tr>
 
     </table>
 
     <div class="row py-2 col-5 mx-auto">
-      <%= form_with model: @leave_request, url: leave_request_path, method: :patch do |f| %>
+      <%= form_with model: @cancel_request, url: leave_request_path(@cancel_request.id), method: :patch do |f| %>
         <%= f.hidden_field :employee_canceled, :value => true %>
         <%= f.submit "申請を取り消す", class: "btn btn-danger col-12" %>
       <% end %>

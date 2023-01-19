@@ -1,0 +1,30 @@
+<div class="container mx-auto">
+
+  <div class="row my-3 mx-auto">
+    <h4 class="col-4 text-center mx-auto">有給申請詳細画面</h4>
+  </div>
+
+    <div class="row py-3 col-11 mx-auto border border-dark rounded">
+      <table class="table table-borderless">
+
+        <tr>
+          <th class="ml-auto">従業員番号</th>
+          <td class="mr-auto"><%= current_employee.id %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto">取得希望日</th>
+          <td class="mx-auto"><%= @leave_request.preferred_date %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto">申請理由</th>
+          <td class="mx-auto"><%= @leave_request.reason_for_request %></td>
+        </tr>
+
+      </table>
+
+      <div class="row py-2 col-5 mx-auto">
+        <%= link_to "申請を取り消す", cancel_request_path(@leave_request.id), class:"btn btn-warning col-12" %>
+      </div>
+
+    </div>
+</div>
