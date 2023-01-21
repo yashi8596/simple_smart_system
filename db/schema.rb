@@ -77,5 +77,4 @@ ActiveRecord::Schema.define(version: 2023_01_07_120733) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "employee_events", "employees"
 end
