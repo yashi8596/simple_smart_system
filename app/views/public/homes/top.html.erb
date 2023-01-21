@@ -14,5 +14,41 @@
         <% end %>
       </div>
     <% end %>
+
+    <% if @leave_requests.present? %>
+      <h5 class="col-12 text-center mx-auto">申請した有休一覧</h5>
+      <div class="row py-2 col-12 mx-auto border border-dark rounded">
+        <table class="table table-hovered table-borderless">
+
+          <tr>
+            <th class="col-2">申請日時</th>
+            <th class="col-2">取得予定日時</th>
+            <th class="col-2">取消申請状況</th>
+            <th class="col-6 text-center">詳細リンク</th>
+          </tr>
+
+          <% @leave_requests.each do |lr| %>
+            <tr>
+              <td class="col-2"><%= lr.created_at.strftime("%Y年%m月%d日") %></td>
+              <td class="col-2"><%= lr.preferred_date.strftime("%Y年%m月%d日") %></td>
+              <td class="col-2">
+                <% if lr.employee_canceled? %>
+                  <label class="text-danger">有効</label>
+                <% else %>
+                  <label class="text-success">無効</label>
+                <% end %>
+              </td>
+              <td class="col-6">
+                <% if lr.employee_canceled? %>
+                  <p class="text-center">取消申請状況が有効なのでリンクは表示されません</p>
+                <% else %>
+                  <%= link_to "申請を取り消す", cancel_path(lr.id), class:"btn btn-warning col-12 mx-auto py-1" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <% end %>
   </div>
 </div>

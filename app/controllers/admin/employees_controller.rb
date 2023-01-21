@@ -17,6 +17,7 @@ class Admin::EmployeesController < Admin::Base
   def show
     @employee = Employee.find(params[:id])
     @salary = Salary.find_by(employee_number: @employee.employee_number, created_at: Time.current.all_month)
+    @leave_requests = LeaveRequest.where(permitted: true).where(employee_canceled: false)
   end
 
   def edit

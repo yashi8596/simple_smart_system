@@ -9,17 +9,25 @@
 
       <tr>
         <th class="ml-auto text-center">取得日</th>
-        <td class="mx-auto">
-          <%= @cancel_request.preferred_date %>
+        <td class="mr-auto"><%= @cancel_request.preferred_date %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto text-center">申請状況</th>
+        <td class="mr-auto">
+          <% if @cancel_request.permitted == true %>
+            <label class="text-success"><strong>承認済</strong></label>
+          <% else %>
+            <label class="text-secondary"><strong>申請中</strong></label>
+          <% end %>
         </td>
       </tr>
 
     </table>
 
-    <div class="row py-2 col-5 mx-auto">
-      <%= form_with model: @cancel_request, url: leave_request_path(@cancel_request.id), method: :patch do |f| %>
+    <div class="row py-2 mx-auto">
+      <%= form_with model: @cancel_request, url: cancel_update_path(@cancel_request.id), method: :patch do |f| %>
         <%= f.hidden_field :employee_canceled, :value => true %>
-        <%= f.submit "申請を取り消す", class: "btn btn-danger col-12" %>
+        <%= f.submit "申請を取り消す", class: "btn btn-danger col-12 mx-auto" %>
       <% end %>
     </div>
 

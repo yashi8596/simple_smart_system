@@ -23,7 +23,11 @@
       </table>
 
       <div class="row py-2 col-5 mx-auto">
-        <%= link_to "申請を取り消す", cancel_request_path(@leave_request.id), class:"btn btn-warning col-12" %>
+        <% if @leave_request.employee_canceled? %>
+          <%= link_to "マイページに戻る", root_path(current_employee.id), class:"btn btn-info col-12" %>
+        <% else %>
+          <%= link_to "申請を取り消す", cancel_path(@leave_request.id), class:"btn btn-warning col-12" %>
+        <% end %>
       </div>
 
     </div>
