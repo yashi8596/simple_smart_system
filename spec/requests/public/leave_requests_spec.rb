@@ -1,23 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe "Public::Requests", type: :request do
+RSpec.describe "Public::LeaveRequests", type: :request do
   describe "GET /new" do
     it "returns http success" do
-      get "/public/requests/new"
+      get "/public/leave_requests/new"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /create" do
     it "returns http success" do
-      get "/public/requests/create"
+      post "/public/leave_requests/create"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /show" do
     it "returns http success" do
-      get "/public/requests/show"
+      get "/public/leave_requests/show"
       expect(response).to have_http_status(:success)
     end
   end
