@@ -9,7 +9,7 @@ describe "管理者による従業員管理" do
 
     example "従業員詳細ページにリダイレクト" do
       post admin_employees_url, params: { employee: params_hash }
-      expect(response).to redirect_to(admin_employee_url[:employee])
+      expect(response).to redirect_to(admin_employee_url(12345678))
     end
 
     example "例外ActionController::ParameterMissingが発生" do
