@@ -1,46 +1,92 @@
 <div class="container mx-auto">
 
   <div class="row my-3 mx-auto">
-    <h4 class="col-12 text-center mx-auto"><%= @employee.last_name %><%= @employee.first_name %>さんの従業員マイページ</h4>
+    <h4 class="col-12 text-center mx-auto"><%= @employee.last_name %><%= @employee.first_name %>さんの従業員トップページ</h4>
   </div>
 
-  <div class="row py-3 col-12 mx-auto">
-    <%= month_calendar events: @events do |date, events| %>
-      <div><%= date.day %></div>
+  <div class="row py-3 col-11 mx-auto border border-dark rounded">
+    <h5 class="col-12 text-center mx-auto">従業員登録情報詳細</h5>
+    <p class="col-12 text-center">※色が付いている項目は編集することができます。</p>
+    <table class="table table-borderless mx-3">
 
-      <div class="col-12">
-        <% events.each do |event| %>
-          <%= link_to "有給", edit_employee_event_path(event.id) %>
-        <% end %>
-      </div>
-    <% end %>
+      <tr>
+        <th class="ml-auto col-5">従業員番号</th>
+        <td class="mr-auto col-5"><%= @employee.employee_number %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">従業員名</th>
+        <td class="mx-auto row table-info">
+          <%= @employee.last_name %> <%= @employee.first_name %>
+        </td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">従業員名(カナ)</th>
+        <td class="mx-auto row table-info">
+          <%= @employee.last_name_kana %> <%= @employee.first_name_kana %>
+        </td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">住所</th>
+        <td class="mr-auto col-5"><%= @employee.address %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">電話番号</th>
+        <td class="mr-auto col-5"><%= @employee.telephone_number %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">メールアドレス</th>
+        <td class="mr-auto col-5 table-info"><%= @employee.email %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">有休残日数</th>
+        <td class="mr-auto col-5"><%= "#{@employee.number_of_paid_leave}日" %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">入社日</th>
+        <td class="mr-auto col-5"><%= @employee.start_date.strftime("%Y年%m月%d日") %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">退職日</th>
+        <td class="mr-auto col-5">
+          <% if @employee.end_date? %>
+            <%= @employee.end_date.strftime("%年%m月%d日") %>
+          <% else %>
+            <%= "未定" %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+
+    <div class="row py-2 col-6 mx-auto">
+      <%= link_to "編集する", edit_employees_path, class:"col btn btn-success ml-auto mr-1 py-3" %>
+    </div>
 
     <% if @leave_requests.present? %>
-      <h5 class="col-12 text-center mx-auto">申請した有休一覧</h5>
+      <h5 class="col-12 text-center mx-auto">申請した有給一覧</h5>
       <div class="row py-2 col-12 mx-auto border border-dark rounded">
         <table class="table table-hovered table-borderless">
 
           <tr>
-            <th class="col-2">申請日時</th>
-            <th class="col-2">取得予定日時</th>
-            <th class="col-2">取消申請状況</th>
-            <th class="col-6 text-center">詳細リンク</th>
+            <th class="col-3">申請日時</th>
+            <th class="col-3">取得予定日時</th>
+            <th class="col-2">申請状況</th>
+            <th class="col-2">取消の申請</th>
           </tr>
 
           <% @leave_requests.each do |lr| %>
             <tr>
-              <td class="col-2"><%= lr.created_at.strftime("%Y年%m月%d日") %></td>
-              <td class="col-2"><%= lr.preferred_date.strftime("%Y年%m月%d日") %></td>
+              <td class="col-3"><%= lr.created_at.strftime("%Y年%m月%d日") %></td>
+              <td class="col-3"><%= lr.preferred_date.strftime("%Y年%m月%d日") %></td>
               <td class="col-2">
-                <% if lr.employee_canceled? %>
-                  <label class="text-danger">有効</label>
+                <% if lr.permitted? %>
+                  <label class="text-primary">承認済</label>
                 <% else %>
-                  <label class="text-success">無効</label>
+                  <label class="text-secondary">申請中</label>
                 <% end %>
               </td>
-              <td class="col-6">
+              <td class="col-4">
                 <% if lr.employee_canceled? %>
-                  <p class="text-center">取消申請状況が有効なのでリンクは表示されません</p>
+                  <label class="text-danger">有効</label>
                 <% else %>
                   <%= link_to "申請を取り消す", cancel_path(lr.id), class:"btn btn-warning col-12 mx-auto py-1" %>
                 <% end %>

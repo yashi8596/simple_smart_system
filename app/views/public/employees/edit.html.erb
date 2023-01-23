@@ -1,2 +1,47 @@
-<h1>Public::Employees#edit</h1>
-<p>Find me in app/views/public/employees/edit.html.erb</p>
+<div class="container mx-auto">
+
+  <div class="row my-3 mx-auto">
+    <h4 class="col-12 text-center mx-auto">従業員編集画面</h4>
+  </div>
+
+  <%= form_with model: @employee, url: employees_path, method: :patch do |f| %>
+
+    <div class="row py-3 col-11 mx-auto border border-dark rounded">
+      <table class="table table-borderless">
+
+        <tr>
+          <th class="ml-auto"><%= f.label "従業員番号" %></th>
+          <td class="mr-auto"><%= @employee.employee_number %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "従業員名" %></th>
+          <td class="mx-auto row ">
+            <%= f.label "姓", class:"col-1 p-0 text-center" %>
+            <%= f.text_field :last_name, required: true, class:"col-5 form-control" %>
+            <%= f.label "名", class:"col-1 p-0 text-center" %>
+            <%= f.text_field :first_name, required: true, class:"col-5 form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "従業員名(カナ)" %></th>
+          <td class="mx-auto row ">
+            <%= f.label "セイ", class:"col-1 p-0 text-center" %>
+            <%= f.text_field :last_name_kana, required: true, class:"col-5 form-control" %>
+            <%= f.label "メイ", class:"col-1 p-0 text-center" %>
+            <%= f.text_field :first_name_kana, required: true, class:"col-5 form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "メールアドレス" %></th>
+          <td class="mr-auto"><%= f.text_field :email, required: true, class:"form-control" %></td>
+        </tr>
+      </table>
+
+      <div class="row py-2 col-11 mx-auto">
+        <%= f.submit "更新する", class: "btn btn-success col-5 ml-auto mr-1" %>
+        <%= link_to "トップページに戻る", root_path, class:"col btn btn-info col-5 ml-1 mr-auto" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
