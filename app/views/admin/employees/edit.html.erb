@@ -43,10 +43,12 @@
           <th class="ml-auto"><%= f.label "メールアドレス" %></th>
           <td class="mr-auto"><%= f.text_field :email, required: true, class:"form-control" %></td>
         </tr>
-        <tr>
-          <th class="ml-auto"><%= f.label "パスワード" %></th>
-          <td class="mr-auto"><%= f.text_field :password, required: true, class:"form-control" %></td>
-        </tr>
+        <% if f.object.new_record? %>
+          <tr>
+            <th class="ml-auto"><%= f.label "パスワード" %></th>
+            <td class="mr-auto"><%= f.text_field :password, required: true, class:"form-control" %></td>
+          </tr>
+        <% end %>
         <tr>
           <th class="ml-auto"><%= f.label "入社日" %></th>
           <td class="mr-auto"><%= f.date_field :start_date, required: true, class:"form-control" %></td>
