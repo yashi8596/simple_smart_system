@@ -7,53 +7,15 @@
   <div class="row py-3 col-12 mx-auto">
 
     <h5 class="row mx-auto text-center py-2">新規申請一覧</h5>
+    <%= render partial: 'table', locals: { requests: @leave_requests } %>
 
-    <% if @leave_requests.present? %>
-      <table class="table table-hovered">
-
-        <tr>
-          <th>従業員番号</th>
-          <th>従業員氏名</th>
-          <th>詳細リンク</th>
-        </tr>
-
-        <% @leave_requests.each do |lr| %>
-          <tr>
-            <td><%= lr.employee_number %></td>
-            <td><%= lr.employee.last_name %> <%= lr.employee.first_name %></td>
-            <td><%= link_to "詳細", edit_admin_leave_request_path(lr.id), class:"btn btn-info col-5 mx-auto py-1" %></td>
-          </tr>
-        <% end %>
-      </table>
-    <% else %>
-      <p class="row mx-auto text-center py-2">現在、新規申請は届いていません。</p>
-    <% end %>
   </div>
 
   <div class="row py-3 col-12 mx-auto">
 
     <h5 class="row mx-auto text-center py-2">承認済申請一覧</h5>
+    <%= render partial: 'table', locals: { requests: @permit_requests } %>
 
-    <% if @permit_requests.present? %>
-      <table class="table table-hovered">
-
-        <tr>
-          <th>従業員番号</th>
-          <th>従業員氏名</th>
-          <th>詳細リンク</th>
-        </tr>
-
-        <% @permit_requests.each do |pr| %>
-          <tr>
-            <td><%= pr.employee_number %></td>
-            <td><%= pr.employee.last_name %> <%= pr.employee.first_name %></td>
-            <td><%= link_to "詳細", admin_leave_request_path(pr.id), class:"btn btn-info col-5 mx-auto py-1" %></td>
-          </tr>
-        <% end %>
-      </table>
-    <% else %>
-      <p class="row mx-auto text-center py-2">現在、承認済申請はありません。</p>
-    <% end %>
   </div>
 
   <div class="row py-3 col-12 mx-auto">
@@ -71,14 +33,14 @@
 
         <% @cancel_requests.each do |cr| %>
           <tr>
-            <td><%= cr.employee_number %></td>
+            <td><%= cr.employee_id %></td>
             <td><%= cr.employee.last_name %> <%= cr.employee.first_name %></td>
             <td><%= link_to "詳細", admin_cancel_path(cr.id), class:"btn btn-info col-5 mx-auto py-1" %></td>
           </tr>
         <% end %>
       </table>
     <% else %>
-      <p class="row mx-auto text-center py-2">現在、取消申請は届いていません。</p>
+      <p class="row mx-auto text-center py-2">現在、申請は届いていません。</p>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,22 @@
+<% if requests.present? %>
+
+  <table class="table table-hovered">
+
+    <tr>
+      <th>従業員番号</th>
+      <th>従業員氏名</th>
+      <th>詳細リンク</th>
+    </tr>
+
+    <% requests.each do |r| %>
+      <tr>
+        <td><%= r.employee_id %></td>
+        <td><%= r.employee.last_name %> <%= r.employee.first_name %></td>
+        <td><%= link_to "詳細", edit_admin_leave_request_path(r.id), class:"btn btn-info col-5 mx-auto py-1" %></td>
+      </tr>
+    <% end %>
+  </table>
+
+<% else %>
+  <p class="row mx-auto text-center py-2">現在、申請は届いていません。</p>
+<% end %>
