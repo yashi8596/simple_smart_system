@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_07_120733) do
+ActiveRecord::Schema.define(version: 2023_01_06_160218) do
 
   create_table "admins", force: :cascade do |t|
     t.integer "employee_number", null: false
@@ -20,15 +20,6 @@ ActiveRecord::Schema.define(version: 2023_01_07_120733) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index "LOWER(email)", name: "index_admins_on_LOWER_email", unique: true
-  end
-
-  create_table "employee_events", force: :cascade do |t|
-    t.integer "employee_id", null: false
-    t.string "type", null: false
-    t.date "paid_leave_date"
-    t.datetime "created_at", null: false
-    t.index ["created_at"], name: "index_employee_events_on_created_at"
-    t.index ["employee_id", "created_at"], name: "index_employee_events_on_employee_id_and_created_at"
   end
 
   create_table "employees", primary_key: "employee_number", force: :cascade do |t|
@@ -51,7 +42,7 @@ ActiveRecord::Schema.define(version: 2023_01_07_120733) do
   end
 
   create_table "leave_requests", force: :cascade do |t|
-    t.integer "employee_number", null: false
+    t.integer "employee_id", null: false
     t.date "preferred_date", null: false
     t.text "reason_for_request", null: false
     t.boolean "permitted"
@@ -66,7 +57,7 @@ ActiveRecord::Schema.define(version: 2023_01_07_120733) do
     t.integer "total_hour", null: false
     t.integer "extra_hour", default: 0, null: false
     t.integer "midnight_hour", default: 0, null: false
-    t.integer "employee_number", null: false
+    t.integer "employee_id", null: false
     t.integer "used_paid_leave", default: 0, null: false
     t.integer "total_workday", null: false
     t.integer "absent", default: 0, null: false
