@@ -1,5 +1,8 @@
 class Salary < ApplicationRecord
-  belongs_to :employee, foreign_key: 'employee_number'
+  belongs_to :employee
+  alias_attribute :employee_number, :employee_id
+
+  validates :wage, :total_hour, :extra_hour, :midnight_hour, :total_minute, :extra_minute, :midnight_minute, :employee_number, :used_paid_leave, :total_workday, :absent, presence: true
 
   def calc_basic
     total_hour * wage + (total_minute * wage).floor
