@@ -23,6 +23,8 @@ class Admin::SessionsController < Admin::Base
         render action: "new"
       else
         session[:admin_id] = admin.id
+        #セッションタイムアウト用に記録する
+        session[:admin_last_access_time] = Time.current
         flash.notice = "ログインしました。"
         redirect_to :admin_root
       end
@@ -35,7 +37,7 @@ class Admin::SessionsController < Admin::Base
   def destroy
     session.delete(:admin_id)
     flash.notice = "ログアウトしました。"
-    redirect_to new_admin_sessions_path
+    redirect_to new_admin_session_path
   end
 
   private

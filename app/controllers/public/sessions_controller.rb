@@ -23,6 +23,8 @@ class Public::SessionsController < Public::Base
         render action: "new"
       else
         session[:employee_number] = employee.employee_number
+        # ログイン時の現在時刻を記録（セッションタイムアウト機能用）
+        session[:last_access_time] = Time.current
         flash.notice = "ログインしました。"
         redirect_to root_path
       end
@@ -35,7 +37,7 @@ class Public::SessionsController < Public::Base
   def destroy
     session.delete(:employee_number)
     flash.notice = "ログアウトしました。"
-    redirect_to new_sessions_path
+    redirect_to new_session_path
   end
 
   private
