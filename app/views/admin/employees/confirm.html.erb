@@ -9,7 +9,7 @@
 
       <tr>
         <th class="ml-auto col-5">従業員番号</th>
-        <td class="mr-auto col-5"><%= @employee.employee_number %></td>
+        <td class="mr-auto col-5"><%= @employee.id %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">従業員名</th>
@@ -25,30 +25,10 @@
       </tr>
     </table>
 
-    <%= form_with model: @employee, url: admin_employee_path, method: :delete do |f| %>
-
       <div class="row py-3 col-11 mx-auto">
-        <table class="table table-borderless">
-          <tr>
-            <th class="ml-auto"><%= f.label "管理者パスワード" %></th>
-            <td class="mr-auto"><%= f.text_field :admin_password, class:"form-control" %></td>
-          </tr>
-        </table>
 
-        <div class="row py-2 col-11 mx-auto border border-dark rounded">
-          <p class="py-2 col-10 m-auto text-center">
-            退職される従業員が上記の者で
-            間違いがないことを確認しました。
-          </p>
-          <%= f.check_box :confirm, class:"form-control mx-auto col-2 my-auto" %>
-        </div>
-
-
-        <div class="row py-2 col-11 mx-auto">
-          <%= f.submit "アカウントを削除する", class: "btn btn-danger col-5 mx-auto" %>
-        </div>
+        <%= link_to "アカウントを削除する", admin_employee_path(@employee.id), class:"btn btn-danger col-5 mx-auto", method: :delete %>
 
       </div>
-    <% end %>
   </div>
 </div>

@@ -1,7 +1,6 @@
 class Employee < ApplicationRecord
   has_many :salaries, dependent: :destroy
-  has_many :requests, dependent: :destroy
-  has_many :employee_events, dependent: :destroy
+  has_many :leave_requests, dependent: :destroy
 
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
 
@@ -17,7 +16,9 @@ class Employee < ApplicationRecord
     before: -> (obj) { 1.year.from_now.to_date },
     allow_blank: true
   }
+  
   def password=(raw_password)
+    #登録時に入力された平文のパスワードをハッシュ化してhashed_passwordカラムにセットする
     if raw_password.kind_of?(String)
 
       self.hashed_password = BCrypt::Password.create(raw_password)
@@ -27,5 +28,9 @@ class Employee < ApplicationRecord
       self.hashed_password = nil
 
     end
+  end
+
+  def active?
+    !suspended?  && start_date <= Date.today && (end_date.nil?  || end_date > Date.today)
   end
 end

@@ -1,8 +1,4 @@
 class Public::EmployeesController < Public::Base
-  def show
-    @employee = current_employee
-  end
-
   def edit
     @employee = current_employee
   end

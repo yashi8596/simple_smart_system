@@ -9,7 +9,7 @@
 
       <tr>
         <th class="ml-auto col-5">従業員番号</th>
-        <td class="mr-auto col-5"><%= @employee.employee_number %></td>
+        <td class="mr-auto col-5"><%= sprintf("%07d", @employee.employee_number) %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">従業員名</th>
@@ -29,7 +29,7 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">電話番号</th>
-        <td class="mr-auto col-5"><%= @employee.telephone_number %></td>
+        <td class="mr-auto col-5"><%= sprintf("%011d", @employee.telephone_number) %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">メールアドレス</th>
@@ -37,7 +37,13 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">有休残日数</th>
-        <td class="mr-auto col-5"><%= "#{@employee.number_of_paid_leave}日" %></td>
+        <td class="mr-auto col-5">
+          <% if @employee.number_of_paid_leave? %>
+            <%= "#{@employee.number_of_paid_leave}日" %>
+          <% else %>
+            0日
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th class="ml-auto col-5">入社日</th>
@@ -62,31 +68,8 @@
       <% if @salary.present? %>
         <%= link_to "#{@employee.last_name}#{@employee.first_name}さんの給与明細詳細を見る", admin_salary_path(@salary.id), class:"col btn btn-info ml-1 mr-auto py-3" %>
       <% else %>
-        <%= link_to "#{@employee.last_name}#{@employee.first_name}さんの給与明細を作成する", new_admin_salary_path, class:"col btn btn-primary ml-1 mr-auto py-3" %>
+        <%= link_to "給与明細を作成する", new_admin_salary_path, class:"col btn btn-primary ml-1 mr-auto py-3" %>
       <% end %>
     </div>
-
-    <% if @leave_requests.present? %>
-      <h5 class="col-12 text-center mx-auto">申請済有休一覧</h5>
-      <div class="row py-2 col-12 mx-auto border border-dark rounded">
-        <table class="table table-hovered table-borderless">
-
-          <tr>
-            <th class="col-3">申請日時</th>
-            <th class="col-3">有休取得日時</th>
-            <th class="col-6 text-center">詳細リンク</th>
-          </tr>
-
-          <% @leave_requests.each do |lr| %>
-            <tr>
-              <td class="col-3"><%= lr.created_at.strftime("%Y年%m月%d日") %></td>
-              <td class="col-3"><%= lr.preferred_date.strftime("%Y年%m月%d日") %></td>
-              <td class="col-6"><%= link_to "申請を取り消す", admin_cancel_path(lr.id), class:"btn btn-warning col-12 mx-auto py-1" %></td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    <% end %>
-
   </div>
 </div>

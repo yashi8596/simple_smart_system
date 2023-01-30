@@ -11,7 +11,7 @@
 
       <tr>
         <th class="ml-auto col-5">従業員番号</th>
-        <td class="mr-auto col-5"><%= @employee.employee_number %></td>
+        <td class="mr-auto col-5"><%= sprintf("%07d", @employee.employee_number) %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">従業員名</th>
@@ -31,7 +31,7 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">電話番号</th>
-        <td class="mr-auto col-5"><%= @employee.telephone_number %></td>
+        <td class="mr-auto col-5"><%= sprintf("%011d", @employee.telephone_number) %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">メールアドレス</th>
@@ -40,6 +40,10 @@
       <tr>
         <th class="ml-auto col-5">有休残日数</th>
         <td class="mr-auto col-5"><%= "#{@employee.number_of_paid_leave}日" %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">パスワード</th>
+        <td class="mr-auto col-5 table-info">************(パスワード保護のため、表示されません)</td>
       </tr>
       <tr>
         <th class="ml-auto col-5">入社日</th>
@@ -58,7 +62,8 @@
     </table>
 
     <div class="row py-2 col-6 mx-auto">
-      <%= link_to "編集する", edit_employees_path, class:"col btn btn-success ml-auto mr-1 py-3" %>
+      <%= link_to "編集する", edit_employee_path, class:"col btn btn-success ml-auto mr-1 py-3" %>
+      <%= link_to "パスワードを変更する", edit_password_path, class:"col btn btn-success ml-1 mr-auto py-3" %>
     </div>
 
     <% if @leave_requests.present? %>

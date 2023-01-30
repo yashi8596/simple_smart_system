@@ -1,6 +1,6 @@
 <div class="container mx-auto mb-3">
   <div class="row">
-    <%= link_to new_sessions_path, class:"my-2 py-3 col-3 border border-dark mx-auto " do %>
+    <%= link_to new_session_path, class:"my-2 py-3 col-3 border border-dark mx-auto " do %>
       <h2 class="text-center">LOGO</h2>
     <% end %>
   </div>
@@ -18,7 +18,7 @@
       </button>
 
       <button type="button" class="btn btn-success col mx-1 my-1 py-1">
-        <%= link_to edit_employees_path(current_employee), class:"y-0 mx-auto" do %>
+        <%= link_to edit_employee_path(current_employee), class:"y-0 mx-auto" do %>
           <li style="list-style: none;" class="mx-auto text-center text-white">登録情報編集</li>
         <% end %>
       </button>
@@ -30,7 +30,7 @@
       </button>
 
       <button type="button" class="btn btn-secondary col ml-1 mr-auto my-1 py-1">
-        <%= link_to sessions_path, class:"y-0 mx-auto", method: :delete do %>
+        <%= link_to session_path, class:"y-0 mx-auto", method: :delete do %>
           <li style="list-style: none;" class="mx-auto text-center text-white">ログアウト</li>
         <% end %>
       </button>

@@ -1,5 +1,6 @@
 class Admin::HomesController < Admin::Base
   def top
-    @employees = Employee.order(:last_name_kana, :first_name_kana)
+    @employees = Employee.order(id: :desc)
+    @employees = @employees.page(params[:page]).per(10)
   end
 end
