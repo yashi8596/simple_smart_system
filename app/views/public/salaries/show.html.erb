@@ -6,7 +6,7 @@
 
   <% if @salary.present? %>
     <div class="row py-3 col-12 mx-auto border border-dark rounded">
-      <h5 class="col-12 text-center mx-auto pt-2 pb-4">給与明細 -<%= Time.current.year %>年<%= Time.current.month %>月分-</h5>
+      <h5 class="col-12 text-center mx-auto pt-2 pb-4">給与明細 -<%= @salary.created_at.strftime("%Y年%m月") %>分-</h5>
       <h6 class="col-12 text-center mx-auto p-1">勤怠</h6>
       <table class="table table-hovered table-bordered mb-0 mx-auto pb-3">
 

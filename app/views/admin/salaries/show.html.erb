@@ -9,7 +9,7 @@
 
       <tr>
         <th class="ml-auto col-5">従業員番号</th>
-        <td class="mr-auto col-5"><%= @salary.employee_number %></td>
+        <td class="mr-auto col-5"><%= @salary.employee_id %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">従業員名</th>
@@ -54,7 +54,7 @@
 
     <div class="row py-2 col-11 mx-auto">
       <%= link_to "編集する", edit_admin_salary_path(@salary.id), class:"col-5 btn btn-success mx-auto" %>
-      <%= link_to "従業員詳細に戻る", admin_employee_path(@salary.employee_number), class:"col-5 btn btn-warning text-white mx-auto" %>
+      <%= link_to "従業員詳細に戻る", admin_employee_path(@salary.employee_id), class:"col-5 btn btn-warning text-white mx-auto" %>
     </div>
 
   </div>

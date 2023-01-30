@@ -12,7 +12,7 @@
         <tr>
           <th class="ml-auto col-5"><%= f.label "従業員番号" %></th>
           <td class="mx-auto">
-            <%= @leave_request.employee.employee_number %>
+            <%= @leave_request.employee.id %>
           </td>
         </tr>
         <tr>
@@ -37,24 +37,6 @@
       <div class="row py-2 col-5 mx-auto">
         <%= f.hidden_field :permitted, :value => true %>
         <%= f.submit "承認する", class: "btn btn-primary col-12" %>
-      </div>
-    </div>
-
-  <% end %>
-
-  <%= form_with model: @leave_request, url: admin_leave_request_path(@leave_request.id), method: :patch do |f| %>
-    <div class="row py-3 col-11 mx-auto">
-      <table class="table table-borderless">
-
-        <tr>
-          <th class="ml-auto col-5"><%= f.label "申請拒否理由" %></th>
-          <td class="mx-auto"><%= f.text_area :reason_for_request, class:"form-control" %></td>
-        </tr>
-
-      </table>
-      <div class="row py-2 col-5 mx-auto">
-        <%= f.hidden_field :permitted, :value => false %>
-        <%= f.submit "拒否する", class: "btn btn-danger col-12" %>
       </div>
     </div>
 

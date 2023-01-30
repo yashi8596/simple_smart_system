@@ -5,7 +5,7 @@ class Admin::SalariesController < Admin::Base
 
   def create
     @salary = Salary.new(salary_params)
-    if @salary.save!
+    if @salary.save
       flash.notice = "給与明細の登録が完了しました。"
       redirect_to admin_salary_path(@salary.id)
     else
@@ -21,7 +21,7 @@ class Admin::SalariesController < Admin::Base
 
   def show
     @salary = Salary.find(params[:id])
-    @employee = Employee.find_by(employee_number: @salary.employee_number)
+    @employee = Employee.find_by(employee_number: @salary.employee_id)
   end
 
   def edit
@@ -42,7 +42,7 @@ class Admin::SalariesController < Admin::Base
   private
   def salary_params
     params.require(:salary).permit(
-      :employee_number, :total_workday, :used_paid_leave, :absent,
+      :employee_id, :total_workday, :used_paid_leave, :absent,
       :wage, :total_hour, :total_minute, :extra_hour, :extra_minute,
       :midnight_hour, :midnight_minute,
     )

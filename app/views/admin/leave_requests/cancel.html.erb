@@ -5,31 +5,31 @@
   </div>
 <div class="border border-dark rounded">
 
-  <%= form_with model: @leave_request, url: admin_cancel_update_path(@leave_request.id), method: :patch do |f| %>
+  <%= form_with model: @cancel_request, url: admin_cancel_update_path(@cancel_request.id), method: :patch do |f| %>
     <div class="row py-3 col-11 mx-auto">
       <table class="table table-borderless">
 
         <tr>
           <th class="ml-auto col-5"><%= f.label "従業員番号" %></th>
           <td class="mx-auto">
-            <%= @leave_request.employee.employee_number %>
+            <%= @cancel_request.employee_id %>
           </td>
         </tr>
         <tr>
           <th class="ml-auto col-5"><%= f.label "従業員氏名" %></th>
           <td class="mx-auto row">
-            <%= @leave_request.employee.last_name %> <%= @leave_request.employee.first_name %>
+            <%= @cancel_request.employee.last_name %> <%= @cancel_request.employee.first_name %>
           </td>
         </tr>
         <tr>
           <th class="ml-auto col-5"><%= f.label "有給取得日" %></th>
           <td class="mx-auto">
-            <%= @leave_request.preferred_date %>
+            <%= @cancel_request.preferred_date %>
           </td>
         </tr>
         <tr>
           <th class="ml-auto col-5"><%= f.label "申請理由" %></th>
-          <td class="mx-auto py-3"><%= @leave_request.reason_for_request %></td>
+          <td class="mx-auto py-3"><%= @cancel_request.reason_for_request %></td>
         </tr>
 
       </table>

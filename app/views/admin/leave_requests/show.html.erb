@@ -9,7 +9,7 @@
 
       <tr>
         <th class="ml-auto">従業員番号</th>
-        <td class="mx-auto"><%= @leave_request.employee.employee_number %></td>
+        <td class="mx-auto"><%= @leave_request.employee.id %></td>
       </tr>
       <tr>
         <th class="ml-auto">従業員氏名</th>
@@ -37,7 +37,7 @@
     </table>
 
     <div class="row py-2 col-11 mx-auto">
-      <%= link_to "#{@leave_request.employee.last_name}#{@leave_request.employee.first_name}さんの従業員詳細画面を見る", admin_employee_path(@leave_request.employee.employee_number), class:"col-5 btn btn-info text-white mx-auto" %>
+      <%= link_to "#{@leave_request.employee.last_name}#{@leave_request.employee.first_name}さんの従業員詳細画面を見る", admin_employee_path(@leave_request.employee.id), class:"col-5 btn btn-info text-white mx-auto" %>
     </div>
   </div>
 </div>
