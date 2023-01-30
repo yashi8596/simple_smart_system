@@ -1,7 +1,7 @@
 class CreateLeaveRequests < ActiveRecord::Migration[6.1]
   def change
     create_table :leave_requests do |t|
-      t.integer :employee_id, null: false
+      t.string :employee_id, null: false
       t.date :preferred_date, null: false
       t.text :reason_for_request, null: false
       t.boolean :permitted

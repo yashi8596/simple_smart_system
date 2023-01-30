@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2023_01_06_160218) do
 
   create_table "admins", force: :cascade do |t|
-    t.integer "employee_number", null: false
+    t.string "employee_number", null: false
     t.string "hashed_password", null: false
     t.string "email", null: false
     t.boolean "suspended", default: false, null: false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2023_01_06_160218) do
     t.string "first_name_kana", null: false
     t.string "hashed_password"
     t.string "address", null: false
-    t.integer "telephone_number", null: false
+    t.string "telephone_number", null: false
     t.string "email", null: false
     t.integer "number_of_paid_leave"
     t.date "start_date", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2023_01_06_160218) do
   end
 
   create_table "leave_requests", force: :cascade do |t|
-    t.integer "employee_id", null: false
+    t.string "employee_id", null: false
     t.date "preferred_date", null: false
     t.text "reason_for_request", null: false
     t.boolean "permitted"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2023_01_06_160218) do
     t.integer "total_hour", null: false
     t.integer "extra_hour", default: 0, null: false
     t.integer "midnight_hour", default: 0, null: false
-    t.integer "employee_id", null: false
+    t.string "employee_id", null: false
     t.integer "used_paid_leave", default: 0, null: false
     t.integer "total_workday", null: false
     t.integer "absent", default: 0, null: false
