@@ -1,0 +1,37 @@
+<div class="container mx-auto">
+
+  <div class="row my-3 mx-auto">
+    <h4 class="col-12 text-center mx-auto">パスワード変更画面</h4>
+  </div>
+
+  <%= form_with model: @change_password_form, url: password_path, method: :patch do |f| %>
+
+    <div class="row py-3 col-11 mx-auto border border-dark rounded">
+      <table class="table table-borderless">
+
+        <tr>
+          <th class="ml-auto"><%= f.label "現在のパスワード" %></th>
+          <td class="mr-auto">
+            <%= f.password_field :current_password, required: true, class:"form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "新しいパスワード" %></th>
+          <td class="mr-auto">
+            <%= f.password_field :new_password, required: true, class:"form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "新しいパスワード（確認用）" %></th>
+          <td class="mr-auto"><%= f.password_field :new_password_confirmation, required: true, class:"form-control" %></td>
+        </tr>
+      </table>
+
+      <div class="row py-2 col-11 mx-auto">
+        <%= f.submit "更新する", class: "btn btn-success col-5 ml-auto mr-1" %>
+        <%= link_to "トップページに戻る", root_path, class:"col btn btn-info col-5 ml-1 mr-auto" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
