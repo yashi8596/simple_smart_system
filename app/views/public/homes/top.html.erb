@@ -11,7 +11,7 @@
 
       <tr>
         <th class="ml-auto col-5">従業員番号</th>
-        <td class="mr-auto col-5"><%= sprintf("%07d", @employee.employee_number) %></td>
+        <td class="mr-auto col-5"><%= @employee.employee_number %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">従業員名</th>
@@ -31,7 +31,7 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">電話番号</th>
-        <td class="mr-auto col-5"><%= sprintf("%011d", @employee.telephone_number) %></td>
+        <td class="mr-auto col-5"><%= @employee.telephone_number %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">メールアドレス</th>

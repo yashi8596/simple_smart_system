@@ -10,7 +10,9 @@
       <table class="table table-borderless col-6">
         <tr>
           <th class="ml-auto"><%= f.label "従業員番号" %></th>
-          <td class="mr-auto"><%= f.text_field :employee_id, required: true, class:"form-control" %></td>
+          <td class="mr-auto">
+            <%= f.select :employee_id, options_from_collection_for_select(Employee.all, :id, :id),  { required: true,  class:'form-control mx-auto', } %>
+          </td>
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "出勤日数" %></th>
@@ -56,9 +58,9 @@
 
       <div class="row py-2 col-11 mx-auto">
         <%= f.submit "登録する", class: "btn btn-success col-5 mx-auto" %>
-        <button type="button" class="btn btn-warning col-5 mx-auto">
-          <%= link_to "前のページに戻る", :back, class:"text-white" %>
-        </button>
+        <%= link_to admin_salaries_path, class:"col-5 mx-auto" do %>
+          <button type="button" class="btn btn-info col-12 text-white">給与一覧に戻る</button>
+        <% end %>
       </div>
 
     </div>

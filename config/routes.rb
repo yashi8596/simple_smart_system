@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :leave_requests, except:[:index, :destroy]
     get "leave_requests/:id/cancel" => "leave_requests#cancel", as: "cancel"
     patch "leave_requests/:id/cancel" => "leave_requests#cancel_update", as: "cancel_update" #申請取り消し用
-    get "salaries/:id" => "salaries#show", as: "salary"
+    resources :salaries, only:[:show, :index]
     resource :password, only:[:edit, :update]
   end
 

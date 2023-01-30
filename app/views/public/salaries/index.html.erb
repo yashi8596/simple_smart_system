@@ -1,0 +1,26 @@
+<div class="container mx-auto">
+
+  <div class="row my-3 mx-auto">
+    <h4 class="col-12 text-center mx-auto">給与明細一覧画面</h4>
+  </div>
+
+  <div class="row py-3 col-12 mx-auto">
+
+    <h5 class="row mx-auto text-center py-2"><%= current_employee.last_name %><%= current_employee.first_name %>さんの給与明細一覧</h5>
+
+    <table class="table table-hovered">
+
+      <tr>
+        <th class="col-6">給与明細日時</th>
+        <th class="col-6">詳細リンク</th>
+      </tr>
+
+      <% @salaries.each do |s| %>
+        <tr>
+          <td class="col-6"><%= s.created_at.strftime("%Y年%m月") %></td>
+          <td class="col-6"><%= link_to "詳細を見る", salary_path(s.id), class:"btn btn-info col-12 mx-auto py-1" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -9,7 +9,7 @@
 
       <tr>
         <th class="ml-auto col-5">従業員番号</th>
-        <td class="mr-auto col-5"><%= sprintf("%07d", @employee.employee_number) %></td>
+        <td class="mr-auto col-5"><%= @employee.employee_number %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">従業員名</th>
@@ -29,7 +29,7 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">電話番号</th>
-        <td class="mr-auto col-5"><%= sprintf("%011d", @employee.telephone_number) %></td>
+        <td class="mr-auto col-5"><%= @employee.telephone_number %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">メールアドレス</th>
@@ -64,12 +64,6 @@
     <div class="row py-2 col-12 mx-auto">
       <%= link_to "編集する", edit_admin_employee_path(@employee.id), class:"col btn btn-success ml-auto mr-1 py-3" %>
       <%= link_to "削除する", admin_confirm_path(@employee.id), class:"col btn btn-danger mx-1 py-3" %>
-
-      <% if @salary.present? %>
-        <%= link_to "#{@employee.last_name}#{@employee.first_name}さんの給与明細詳細を見る", admin_salary_path(@salary.id), class:"col btn btn-info ml-1 mr-auto py-3" %>
-      <% else %>
-        <%= link_to "給与明細を作成する", new_admin_salary_path, class:"col btn btn-primary ml-1 mr-auto py-3" %>
-      <% end %>
     </div>
   </div>
 </div>
