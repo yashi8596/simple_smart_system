@@ -16,8 +16,7 @@ class Admin::EmployeesController < Admin::Base
 
   def show
     @employee = Employee.find(params[:id])
-    @salary = Salary.find_by(employee_number: @employee.employee_number, created_at: Time.current.all_month)
-    @leave_requests = LeaveRequest.where(permitted: true).where(employee_canceled: false)
+    @salary = Salary.find_by(employee_id: @employee.id, created_at: Time.current.all_month)
   end
 
   def edit
@@ -37,21 +36,18 @@ class Admin::EmployeesController < Admin::Base
 
   def confirm #アカウント削除専用確認画面
     @employee = Employee.find(params[:id])
+    unless @employee.end_date? && @employee.suspended?
+      flash.now.alert = "従業員の「退職日が未定」、もしくは「停止ステータスが無効」になっています。"
+      render action: "edit"
+    end
   end
 
   def destroy #従業員アカウントの削除
-    @employee = Employee.find(params[:id])
-    @admin = current_admin
+    employee = Employee.find(params[:id])
 
-      # 「管理者パスワードが一致」かつ「チェックボックスが入力されている」場合のみ、削除が可能になる
-    if ( params[:employee][:password] == @admin.password ) && ( params[:employee][:confirm] == true )
-      @employee.destroy
-      flash.notice = "該当従業員データを削除しました。"
-      redirect_to admin_root_path
-    else
-      flash.now.alert = "入力項目に誤りがあります。再度手続きを行ってください。"
-      render action: "confirm"
-    end
+    employee.destroy
+    flash.notice = "該当従業員データを削除しました。"
+    redirect_to admin_root_path
   end
 
   private #ストロングパラメータ
