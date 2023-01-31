@@ -38,15 +38,15 @@
         </tr>
         <tr>
           <th class="ml-auto col-2">労働時間</th>
-          <td class="mr-auto col-2"><%= @salary.total_hour %></td>
+          <td class="mr-auto col-2"><%= @salary.total_hour %>:<%= sprintf("%02d", (@salary.total_minute * 60).round) %></td>
         </tr>
         <tr>
           <th class="ml-auto col-2">残業時間</th>
-          <td class="mr-auto col-2"><%= @salary.extra_hour %></td>
+          <td class="mr-auto col-2"><%= @salary.extra_hour %>:<%= sprintf("%02d", (@salary.extra_minute * 60).round) %></td>
         </tr>
         <tr>
           <th class="ml-auto col-2">深夜時間</th>
-          <td class="mr-auto col-2"><%= @salary.midnight_hour %></td>
+          <td class="mr-auto col-2"><%= @salary.midnight_hour %>:<%= sprintf("%02d", (@salary.midnight_minute * 60).round) %></td>
         </tr>
       </table>
 
