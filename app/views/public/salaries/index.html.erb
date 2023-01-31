@@ -6,7 +6,9 @@
 
   <div class="row py-3 col-12 mx-auto">
 
-    <h5 class="row mx-auto text-center py-2"><%= current_employee.last_name %><%= current_employee.first_name %>さんの給与明細一覧</h5>
+    <h5 class="col-12 mx-auto text-center py-2"><%= current_employee.last_name %><%= current_employee.first_name %>さんの給与明細一覧</h5>
+
+    <div class="row mx-auto py-2"><%= paginate @salaries %></div>
 
     <table class="table table-hovered">
 
@@ -22,5 +24,7 @@
         </tr>
       <% end %>
     </table>
+
+    <div class="row mx-auto py-2"><%= paginate @salaries %></div>
   </div>
 </div>
