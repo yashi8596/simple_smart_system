@@ -5,13 +5,20 @@ class Admin::SalariesController < Admin::Base
 
   def create
     @salary = Salary.new(salary_params)
-    if @salary.save
-      flash.notice = "給与明細の登録が完了しました。"
-      redirect_to admin_salary_path(@salary.id)
+    salary = Salary.find_by(employee_id: @salary.employee_id, created_at: Time.current.all_month)
+
+    unless salary
+      # 作成された給与明細が重複していないかどうか判定
+      if @salary.save
+        flash.notice = "給与明細の登録が完了しました。"
+        redirect_to admin_salary_path(@salary.id)
+      else
+        flash.now.alert = "入力に誤りがあります。再度登録を行ってください。"
+      end
     else
-      flash.now.alert = "入力に誤りがあります。再度登録を行ってください。"
-      render action: "new"
+      flash.now.alert = "選択した従業員の今月の給与明細は既に作成されています。"
     end
+    render action: "new"
   end
 
   def index
