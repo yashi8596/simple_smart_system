@@ -1,5 +1,6 @@
 class CreateAdmins < ActiveRecord::Migration[6.1]
   def change
+=begin
     create_table :admins do |t|
       t.string :employee_number, null: false
       t.string :hashed_password, null: false
@@ -7,7 +8,7 @@ class CreateAdmins < ActiveRecord::Migration[6.1]
       t.boolean :suspended, null: false, default: false
       t.timestamps
     end
-
+=end
     add_index :admins, 'LOWER(email)' , unique: true
 
   end
