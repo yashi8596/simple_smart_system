@@ -19,7 +19,7 @@
 
 ### 主な利用シーン
 ・有給休暇等の申請
-・給与明細や就業にかかわる書類等の確認
+・給与明細や申請の詳細等の確認
 
 ### 実装機能リストのURL
 https://docs.google.com/spreadsheets/d/1V7bnSpySKBEqy-Rqk6dNe2nc4cILwUayQE-KEaYZ6H0/edit?usp=sharing
