@@ -15,8 +15,5 @@ class CreateEmployees < ActiveRecord::Migration[6.1]
       t.boolean :suspended, null: false, default: false
       t.timestamps
     end
-
-    #add_index :employees, 'LOWER(email)', unique: true
-    #add_index :employees, [ :last_name_kana, :first_name_kana ]
   end
 end

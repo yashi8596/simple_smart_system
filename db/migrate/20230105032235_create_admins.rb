@@ -8,7 +8,5 @@ class CreateAdmins < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    #add_index :admins, 'LOWER(email)' , unique: true
-
   end
 end
