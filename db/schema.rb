@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2023_01_06_160218) do
     t.boolean "suspended", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["last_name_kana", "first_name_kana"], name: "index_employees_on_last_name_kana_and_first_name_kana"
   end
 
   create_table "leave_requests", force: :cascade do |t|
