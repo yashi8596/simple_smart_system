@@ -46,7 +46,7 @@
         <% if f.object.new_record? %>
           <tr>
             <th class="ml-auto"><%= f.label "パスワード" %></th>
-            <td class="mr-auto"><%= f.text_field :password, required: true, class:"form-control" %></td>
+            <td class="mr-auto"><%= f.password_field :password, required: true, class:"form-control" %></td>
           </tr>
         <% end %>
         <tr>
