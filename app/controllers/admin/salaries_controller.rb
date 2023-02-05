@@ -11,14 +11,14 @@ class Admin::SalariesController < Admin::Base
       # 作成された給与明細が重複していないかどうか判定
       if @salary.save
         flash.notice = "給与明細の登録が完了しました。"
-        redirect_to admin_salary_path(@salary.id)
+        redirect_to admin_salary_path(@salary.id) and return
       else
         flash.now.alert = "入力に誤りがあります。再度登録を行ってください。"
       end
     else
       flash.now.alert = "選択した従業員の今月の給与明細は既に作成されています。"
     end
-    render action: "new"
+    render action: "new" and return
   end
 
   def index
@@ -39,10 +39,10 @@ class Admin::SalariesController < Admin::Base
     @salary = Salary.find(params[:id])
     if @salary.update(salary_params)
       flash.notice = "給与明細の更新が完了しました。"
-      redirect_to admin_salary_path(@salary.id)
+      redirect_to admin_salary_path(@salary.id) and return
     else
       flash.now.alert = "入力に誤りがあります。再度登録を行ってください。"
-      render action: "edit"
+      render action: "edit" and return
     end
   end
 
