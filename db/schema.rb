@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2023_01_06_160218) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "employees", primary_key: "employee_number", force: :cascade do |t|
+  create_table "employees", primary_key: "employee_number", id: :string, force: :cascade do |t|
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
