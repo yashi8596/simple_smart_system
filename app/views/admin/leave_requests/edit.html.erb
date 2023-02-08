@@ -31,12 +31,22 @@
           <th class="ml-auto col-5"><%= f.label "申請理由" %></th>
           <td class="mx-auto py-3"><%= @leave_request.reason_for_request %></td>
         </tr>
+        <tr>
+          <th class="ml-auto">申請ステータス</th>
+          <td class="mx-auto text-success">
+            <% if @leave_request.permitted? %>
+              <%= "承認されています。" %>
+            <% end %>
+          </td>
+        </tr>
 
       </table>
 
       <div class="row py-2 col-5 mx-auto">
-        <%= f.hidden_field :permitted, :value => true %>
-        <%= f.submit "承認する", class: "btn btn-primary col-12" %>
+        <% unless @leave_request.permitted? %>
+          <%= f.hidden_field :permitted, :value => true %>
+          <%= f.submit "承認する", class: "btn btn-primary col-12" %>
+        <% end %>
       </div>
     </div>
 
