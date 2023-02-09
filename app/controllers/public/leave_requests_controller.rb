@@ -10,13 +10,19 @@ class Public::LeaveRequestsController < Public::Base
 
   def create
     @leave_request = LeaveRequest.new(lr_params)
+    day = @leave_request.preferred_date.wday
+
     if @leave_request.emp_request
-      if @leave_request.save
-        flash.notice = "有給申請を受け付けました。（申請取り消しはトップページ下に表示されています。）"
-        redirect_to root_path(current_employee) and return
-      else
-        flash.now.alert = "入力項目に誤りがあります。"
+      #希望日が土日に指定されないようにする
+      unless (day == 0) || (day == 6)
+        if @leave_request.save
+          flash.notice = "有給申請を受け付けました。（申請取り消しはトップページ下に表示されています。）"
+          redirect_to root_path(current_employee) and return
+        else
+          flash.now.alert = "入力項目に誤りがあります。"
+        end
       end
+      flash.now.alert = "取得希望日に休日を指定することはできません。"
     else
       flash.now.alert = "期日を過ぎているため、申請を受け付けることができません。申請期日は取得予定日から10日前までとなります。"
     end
