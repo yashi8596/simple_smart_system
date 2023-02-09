@@ -5,13 +5,8 @@ class Admin::LeaveRequestsController < Admin::Base
     @cancel_requests = LeaveRequest.where(employee_canceled: true)
   end
 
-  def show
-    #申請が完了したことを確認するためのアクション
-    @leave_request = LeaveRequest.find(params[:id])
-  end
-
   def edit
-    #新規申請の可否を行うアクション
+    #新規申請の可否を行うアクション(完了確認もこちらで行う)
     @leave_request = LeaveRequest.find(params[:id])
   end
 
@@ -32,7 +27,7 @@ class Admin::LeaveRequestsController < Admin::Base
       if @employee.update_attribute(:number_of_paid_leave, paid_leave)
         #承認後に取り消す場合を考慮して、ここでは申請記録を消去しない
         flash.notice = "#{@employee.last_name}#{@employee.first_name}さんの有給申請を承認しました。"
-        redirect_to admin_leave_request_path(@leave_request.id) and return
+        redirect_to edit_admin_leave_request_path(@leave_request.id) and return
       end
     else
       flash.now.alert = "お手数ですが、もう一度操作をやり直してください。"
@@ -43,10 +38,6 @@ class Admin::LeaveRequestsController < Admin::Base
   def cancel
     #申請の取消用画面
     @cancel_request = LeaveRequest.find(params[:id])
-    unless @cancel_request.employee_canceled
-      flash.alert = "まだ従業員からの申請の取消を受け付けていません。"
-      redirect_to admin_leave_request_path(@cancel_request.id)
-    end
   end
 
   def cancel_update

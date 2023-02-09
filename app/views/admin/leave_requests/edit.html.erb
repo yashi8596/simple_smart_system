@@ -31,14 +31,16 @@
           <th class="ml-auto col-5"><%= f.label "申請理由" %></th>
           <td class="mx-auto py-3"><%= @leave_request.reason_for_request %></td>
         </tr>
-        <tr>
-          <th class="ml-auto">申請ステータス</th>
-          <td class="mx-auto text-success">
-            <% if @leave_request.permitted? %>
-              <%= "承認されています。" %>
-            <% end %>
-          </td>
-        </tr>
+        <% if @leave_request.permitted? %>
+          <tr>
+            <th class="ml-auto">申請ステータス</th>
+            <td class="mx-auto text-success">
+              <% if @leave_request.permitted? %>
+                <%= "承認されています。" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
 
       </table>
 

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :employees, except:[:index]
     get "employees/:id/confirm" => "employees#confirm", as: "confirm" #従業員データ物理削除時の確認用画面
     resources :salaries, except:[:destroy]
-    resources :leave_requests, except:[:new, :create, :destroy]
+    resources :leave_requests, except:[:new, :show, :create, :destroy]
     get "leave_requests/:id/cancel" => "leave_requests#cancel", as: "cancel"
     patch "leave_requests/:id/cancel" => "leave_requests#cancel_update", as: "cancel_update"
   end

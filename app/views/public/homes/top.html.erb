@@ -39,7 +39,13 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">有休残日数</th>
-        <td class="mr-auto col-5"><%= "#{@employee.number_of_paid_leave}日" %></td>
+        <td class="mr-auto col-5">
+          <% if @employee.number_of_paid_leave? %>
+            <%= "#{@employee.number_of_paid_leave}日" %>
+          <% else %>
+            0日
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th class="ml-auto col-5">パスワード</th>
