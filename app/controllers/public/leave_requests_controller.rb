@@ -12,7 +12,7 @@ class Public::LeaveRequestsController < Public::Base
     @leave_request = LeaveRequest.new(lr_params)
     if @leave_request.emp_request
       if @leave_request.save
-        flash.notice = "有給申請を受け付けました。"
+        flash.notice = "有給申請を受け付けました。（申請取り消しはトップページ下に表示されています。）"
         redirect_to root_path(current_employee) and return
       else
         flash.now.alert = "入力項目に誤りがあります。"

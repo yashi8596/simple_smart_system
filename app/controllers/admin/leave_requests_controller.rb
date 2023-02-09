@@ -25,7 +25,7 @@ class Admin::LeaveRequestsController < Admin::Base
       paid_leave = @employee.number_of_paid_leave.to_i - 1
 
       if @employee.update_attribute(:number_of_paid_leave, paid_leave)
-        #承認後に取り消す場合を考慮して、ここでは申請記録を消去しない
+        #承認後に従業員が申請を取り下げる時のために申請記録は消去しない
         flash.notice = "#{@employee.last_name}#{@employee.first_name}さんの有給申請を承認しました。"
         redirect_to edit_admin_leave_request_path(@leave_request.id) and return
       end
