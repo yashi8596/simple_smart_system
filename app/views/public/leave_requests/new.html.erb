@@ -23,12 +23,12 @@
         <tr>
           <th class="ml-auto"><%= f.label "取得希望日" %></th>
           <td class="mx-auto">
-            <%= f.date_field :preferred_date, class:"form-control" %>
+            <%= f.date_field :preferred_date, required: true, class:"form-control" %>
           </td>
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "申請理由" %></th>
-          <td class="mx-auto"><%= f.text_area :reason_for_request, class:"form-control" %></td>
+          <td class="mx-auto"><%= f.text_area :reason_for_request, required: true, class:"form-control" %></td>
         </tr>
 
       </table>
