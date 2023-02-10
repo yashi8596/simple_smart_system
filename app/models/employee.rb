@@ -30,11 +30,6 @@ class Employee < ApplicationRecord
     end
   end
 
-  def add_10_paid_leave
-    #start_dateから6ヶ月後にnumber_of_paid_leaveに「10」を設定する
-    Date.current >= start_date.since(6.month)
-  end
-
   def active?
     !suspended?  && start_date <= Date.today && (end_date.nil?  || end_date > Date.today)
   end
