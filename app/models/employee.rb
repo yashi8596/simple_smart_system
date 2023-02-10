@@ -16,7 +16,7 @@ class Employee < ApplicationRecord
     before: -> (obj) { 1.year.from_now.to_date },
     allow_blank: true
   }
-  
+
   def password=(raw_password)
     #登録時に入力された平文のパスワードをハッシュ化してhashed_passwordカラムにセットする
     if raw_password.kind_of?(String)
@@ -28,6 +28,11 @@ class Employee < ApplicationRecord
       self.hashed_password = nil
 
     end
+  end
+
+  def add_10_paid_leave
+    #start_dateから6ヶ月後にnumber_of_paid_leaveに「10」を設定する
+    Date.current >= start_date.since(6.month)
   end
 
   def active?

@@ -2,6 +2,7 @@ class Public::Base < ApplicationController
   before_action :login #ログイン前のアクセス制御
   before_action :check_account
   before_action :check_timeout
+  before_action :check_paid_leave
   layout 'public'
 
   private
@@ -9,6 +10,12 @@ class Public::Base < ApplicationController
   def login
     unless current_employee
       redirect_to new_session_path
+    end
+  end
+
+  def check_paid_leave
+    if current_employee && current_employee.add_10_paid_leave
+      current_employee.number_of_paid_leave = 10
     end
   end
 
