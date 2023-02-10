@@ -46,9 +46,9 @@ class Admin::Base < ApplicationController
 
   #有給の自動削除
   def check_lr_destroy
-    @leave_requests = LeaveRequest.all
-    if @leave_requests
-      @leave_requests.each do |lr|
+    leave_requests = LeaveRequest.all
+    if leave_requests
+      leave_requests.each do |lr|
         if lr.auto_destroy
           lr.destroy
         end
