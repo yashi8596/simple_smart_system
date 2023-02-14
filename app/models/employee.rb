@@ -44,22 +44,22 @@ class Employee < ApplicationRecord
         self.number_of_paid_leave = 10
       when start_date.since(18.month) then
       #1年6ヶ月後の有給付与
-        self.number_of_paid_leave = number_of_paid_leave + 11
+        self.number_of_paid_leave = number_of_paid_leave.to_i + 11
       when start_date.since(30.month) then
       #2年6ヶ月後の有給付与
-        self.number_of_paid_leave = number_of_paid_leave + 12
+        self.number_of_paid_leave = number_of_paid_leave.to_i + 12
       when start_date.since(42.month) then
       #3年6ヶ月後の有給付与
-        self.number_of_paid_leave = number_of_paid_leave + 14
+        self.number_of_paid_leave = number_of_paid_leave.to_i + 14
       when start_date.since(54.month) then
       #4年6ヶ月後の有給付与
-        self.number_of_paid_leave = number_of_paid_leave + 16
+        self.number_of_paid_leave = number_of_paid_leave.to_i + 16
       when start_date.since(66.month) then
       #5年6ヶ月後の有給付与
-        self.number_of_paid_leave = number_of_paid_leave + 18
+        self.number_of_paid_leave = number_of_paid_leave.to_i + 18
       when start_date.since(78.month)..nil then
       #6年6ヶ月後の有給付与
-        self.number_of_paid_leave = number_of_paid_leave + 20
+        self.number_of_paid_leave = number_of_paid_leave.to_i + 20
       end
       self.granted = 1 #before_actionで実行するので、ログインする度に有給が付与されないようにする
       self.prev_grant_date = next_grant_date #next_grant_dateをprev_grant_dateに代入

@@ -45,6 +45,7 @@ addresses = %w{
     suspended: n == 4,
     next_grant_date: n <= 1 ?  (181 - n).days.ago.to_date.since(18.month) : (181 - n).days.ago.to_date.since(6.month),
     prev_grant_date: n <= 1 ?  (181 - n).days.ago.to_date.since(6.month) : nil,
+    number_of_paid_leave: n <= 1 ?  10 : 0,
     granted: n <= 1 ?  true : false,
   )
 end

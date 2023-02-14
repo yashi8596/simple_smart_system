@@ -42,10 +42,10 @@
       <tr>
         <th class="ml-auto col-5">前回有給付与日</th>
         <td class="mr-auto col-5">
-          <% if @emloyee.prev_grant_date? %>
+          <% if @employee.prev_grant_date? %>
             <%= @employee.prev_grant_date.strftime("%Y年%m月%d日") %>
           <% else %>
-            なし
+            勤続年数が6ヶ月未満のため、付与されていません。
           <% end %>
         </td>
       </tr>
