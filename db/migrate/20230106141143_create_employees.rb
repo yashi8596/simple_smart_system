@@ -10,7 +10,7 @@ class CreateEmployees < ActiveRecord::Migration[6.1]
       t.string :address, null: false
       t.string :telephone_number, null: false
       t.string :email, null: false
-      t.integer :number_of_paid_leave
+      t.integer :number_of_paid_leave, null: false, default: 0
       t.date :start_date, null: false
       t.date :end_date
       t.boolean :suspended, null: false, default: false

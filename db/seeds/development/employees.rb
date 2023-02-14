@@ -38,10 +38,13 @@ addresses = %w{
     first_name_kana: fn[1],
     password: "password",
     address: "#{ad[0]}県#{ad[1]}市#{ad[2]}町#{ad[3]}",
-    telephone_number: "090#{tn}",
+    telephone_number: "012#{tn}",
     email: "#{ln[2]}.#{fn[2]}@exam.com",
-    start_date: (100 - n).days.ago.to_date,
-    end_date: n == 0 ?  Date.today : nil,
-    suspended: n == 1
+    start_date: (181 - n).days.ago.to_date,
+    end_date: n == 7 ?  Date.today : nil,
+    suspended: n == 4,
+    next_grant_date: n <= 1 ?  (181 - n).days.ago.to_date.since(18.month) : (181 - n).days.ago.to_date.since(6.month),
+    prev_grant_date: n <= 1 ?  (181 - n).days.ago.to_date.since(6.month) : nil,
+    granted: n <= 1 ?  true : false,
   )
 end

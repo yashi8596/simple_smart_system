@@ -37,13 +37,21 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">有休残日数</th>
+        <td class="mr-auto col-5"><%= "#{@employee.number_of_paid_leave}日" %></td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">前回有給付与日</th>
         <td class="mr-auto col-5">
-          <% if @employee.number_of_paid_leave? %>
-            <%= "#{@employee.number_of_paid_leave}日" %>
+          <% if @emloyee.prev_grant_date? %>
+            <%= @employee.prev_grant_date.strftime("%Y年%m月%d日") %>
           <% else %>
-            0日
+            なし
           <% end %>
         </td>
+      </tr>
+      <tr>
+        <th class="ml-auto col-5">次回有給付与日</th>
+        <td class="mr-auto col-5"><%= @employee.next_grant_date.strftime("%Y年%m月%d日") %></td>
       </tr>
       <tr>
         <th class="ml-auto col-5">入社日</th>
@@ -55,7 +63,7 @@
           <% if @employee.end_date? %>
             <%= @employee.end_date %>
           <% else %>
-            <%= "未定" %>
+            未定
           <% end %>
         </td>
       </tr>

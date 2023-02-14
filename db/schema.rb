@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_06_160218) do
+ActiveRecord::Schema.define(version: 2023_02_13_161149) do
 
   create_table "admins", force: :cascade do |t|
     t.string "employee_number", null: false
@@ -30,12 +30,15 @@ ActiveRecord::Schema.define(version: 2023_01_06_160218) do
     t.string "address", null: false
     t.string "telephone_number", null: false
     t.string "email", null: false
-    t.integer "number_of_paid_leave"
+    t.integer "number_of_paid_leave", default: 0, null: false
     t.date "start_date", null: false
     t.date "end_date"
     t.boolean "suspended", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "prev_grant_date"
+    t.date "next_grant_date", null: false
+    t.boolean "granted", default: false, null: false
     t.index ["last_name_kana", "first_name_kana"], name: "index_employees_on_last_name_kana_and_first_name_kana"
   end
 
