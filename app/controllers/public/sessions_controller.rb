@@ -12,8 +12,9 @@ class Public::SessionsController < Public::Base
 
   def create
     @form = Public::LoginForm.new(login_form_params)
-    if @form.employee_number.present?
+    if @form.employee_number.present? && @form.email.present?
       employee = Employee.find_by("employee_number = ?", @form.employee_number.downcase)
+      employee = Employee.find_by("email = ?", @form.email.downcase)
     end
 
     if Public::Authenticator.new(employee).authenticate(@form.password)
@@ -42,6 +43,6 @@ class Public::SessionsController < Public::Base
 
   private
   def login_form_params
-    params.require(:public_login_form).permit(:employee_number, :password)
+    params.require(:public_login_form).permit(:employee_number, :email, :password)
   end
 end

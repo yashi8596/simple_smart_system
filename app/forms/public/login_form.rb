@@ -3,5 +3,5 @@
 class Public::LoginForm
   include ActiveModel::Model
 
-  attr_accessor :employee_number, :password
+  attr_accessor :employee_number, :email, :password
 end
