@@ -14,6 +14,10 @@
           <td class="mr-auto"><%= f.text_field :employee_number, autofocus: true , class:"form-control" %></td>
         </tr>
         <tr>
+          <th class="ml-auto"><%= f.label "メールアドレス" %></th>
+          <td class="mr-auto"><%= f.text_field :email, class:"form-control" %></td>
+        </tr>
+        <tr>
           <th class="ml-auto"><%= f.label "パスワード" %></th>
           <td class="mr-auto"><%= f.password_field :password, class:"form-control" %></td>
         </tr>
