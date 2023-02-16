@@ -38,7 +38,7 @@ class Employee < ApplicationRecord
     next_grant_date <= Date.today && granted?
   end
 
-  def granted?
+  def add_granted?
     !granted? && next_grant_date <= Date.today
   end
 end

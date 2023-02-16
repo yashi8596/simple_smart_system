@@ -39,7 +39,10 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">有休残日数</th>
-        <td class="mr-auto col-5"><%= "#{@employee.number_of_paid_leave}日" %></td>
+        <td class="mr-auto row">
+          <%= "#{@employee.number_of_paid_leave}日" %>
+          <%= link_to "残日数を更新する" paid_leave_update_path(current_employee), method: :patch, class:"btn btn-success" do |f| %>
+        </td>
       </tr>
       <tr>
         <th class="ml-auto col-5">前回有給付与日</th>
