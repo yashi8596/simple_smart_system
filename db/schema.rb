@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2023_02_13_161149) do
 
   create_table "admins", force: :cascade do |t|
-    t.string "employee_number", null: false
     t.string "hashed_password", null: false
     t.string "email", null: false
     t.boolean "suspended", default: false, null: false

@@ -13,7 +13,7 @@ class Admin::SessionsController < Admin::Base
   def create
     @form = Admin::LoginForm.new(login_form_params)
     if @form.email.present?
-      admin = Admin.find_by("LOWER(email) = ?", @form.email.downcase)
+      admin = Admin.find_by("email = ?", @form.email.downcase)
     end
 
     if Admin::Authenticator.new(admin).authenticate(@form.password)
