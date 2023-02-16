@@ -6,7 +6,6 @@ class Admin::EmployeesController < Admin::Base
   def create
     @employee = Employee.new(employee_params)
     @employee.next_grant_date = @employee.start_date.since(6.month)
-    @employee.add_paid_leave
 
     if @employee.save
       flash.notice = "従業員アカウントを新規登録しました。"
@@ -28,8 +27,7 @@ class Admin::EmployeesController < Admin::Base
 
   def update
     @employee = Employee.find(params[:id])
-    @employee.next_grant_date = @employee.start_date.since(6.month)
-    @employee.add_paid_leave
+
     if @employee.update(employee_params)
       flash.notice = "登録情報を更新しました。"
       redirect_to admin_employee_path
