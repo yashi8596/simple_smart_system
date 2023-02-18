@@ -1,12 +1,12 @@
 <div class="container mx-auto">
 
   <div class="row my-3 mx-auto">
-    <h4 class="col-12 text-center mx-auto"><%= @employee.last_name %><%= @employee.first_name %>さんの従業員トップページ</h4>
+    <h4 class="col-12 text-center mx-auto"><%= @employee.last_name %><%= @employee.first_name %>さんの<br class="d-xl-none d-lg-none d-md-none d-block">従業員トップページ</h4>
   </div>
 
-  <div class="row py-3 col-11 mx-auto border border-dark rounded">
+  <div class="row py-3 col-xl-11 col-lg-11 col-12 mx-auto border border-dark rounded">
     <h5 class="col-12 text-center mx-auto">従業員登録情報詳細</h5>
-    <p class="col-12 text-center">※色が付いている項目は編集することができます。</p>
+    <p class="col-12 text-center">※色が付いている項目は<br class="d-xl-none d-lg-none d-md-none d-block">編集することができます。</p>
     <table class="table table-borderless mx-3">
 
       <tr>
@@ -15,14 +15,14 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">従業員名</th>
-        <td class="mx-auto row table-info">
-          <%= @employee.last_name %> <%= @employee.first_name %>
+        <td class="mx-auto col-5 table-info">
+          <label class="mr-auto"><%= @employee.last_name %> <%= @employee.first_name %></label>
         </td>
       </tr>
       <tr>
         <th class="ml-auto col-5">従業員名(カナ)</th>
-        <td class="mx-auto row table-info">
-          <%= @employee.last_name_kana %> <%= @employee.first_name_kana %>
+        <td class="mx-auto col-5 table-info">
+          <label class="mr-auto"><%= @employee.last_name_kana %> <%= @employee.first_name_kana %></label>
         </td>
       </tr>
       <tr>
@@ -40,8 +40,12 @@
       <tr>
         <th class="ml-auto col-5">有休残日数</th>
         <td class="mr-auto row">
-          <%= "#{@employee.number_of_paid_leave}日" %>
-          <%= link_to "残日数を更新する" paid_leave_update_path(current_employee), method: :patch, class:"btn btn-success" do |f| %>
+          <div class="mx-0 mb-xl-0 mb-lg-0 mb-md-0 mb-2 col-xl-5 col-lg-5 col-md-4 col-12 pt-2"><%= "#{@employee.number_of_paid_leave}日" %></div>
+          <div class="mx-0 col-xl-5 col-lg-5 col-md-8 col-12">
+            <%= form_with model: @employee, url: paid_leave_update_path, method: :patch do |f| %>
+              <%= f.submit "有休残日数を取得する", class:"btn btn-success" %>
+            <% end %>
+          </div>
         </td>
       </tr>
       <tr>
@@ -60,7 +64,7 @@
       </tr>
       <tr>
         <th class="ml-auto col-5">パスワード</th>
-        <td class="mr-auto col-5 table-info">************(パスワード保護のため、表示されません)</td>
+        <td class="mr-auto col-5 table-info">************</br>(パスワード保護のため、<br class="d-xl-none d-lg-none d-block">表示されません)</td>
       </tr>
       <tr>
         <th class="ml-auto col-5">入社日</th>
@@ -78,9 +82,9 @@
       </tr>
     </table>
 
-    <div class="row py-2 col-6 mx-auto">
-      <%= link_to "編集する", edit_employee_path, class:"col btn btn-success ml-auto mr-1 py-3" %>
-      <%= link_to "パスワードを変更する", edit_password_path, class:"col btn btn-success ml-1 mr-auto py-3" %>
+    <div class="row py-2 col-8 mx-auto">
+      <%= link_to "編集する", edit_employee_path, class:"col-xl col-lg col-md col-12 btn btn-success mx-1 my-1 py-3" %>
+      <%= link_to "パスワードを変更する", edit_password_path, class:"col-xl col-lg col-md col-12 btn btn-success mx-1 my-1 py-3" %>
     </div>
 
     <% if @leave_requests.present? %>
