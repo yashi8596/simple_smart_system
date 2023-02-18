@@ -41,4 +41,35 @@ class Employee < ApplicationRecord
   def add_granted?
     !granted? && next_grant_date <= Date.today
   end
+
+  def calc_paid_leave
+    if next_grant_date == (start_date >> 6)
+    #6ヶ月後の有給付与
+      number_of_paid_leave.to_i + 10
+
+    elsif next_grant_date == (start_date >> 18)
+    #1年6ヶ月後の有給付与
+      number_of_paid_leave.to_i + 11
+
+    elsif next_grant_date == (start_date >> 30)
+    #2年6ヶ月後の有給付与
+      number_of_paid_leave.to_i + 12
+
+    elsif next_grant_date == (start_date >> 42)
+    #3年6ヶ月後の有給付与
+      number_of_paid_leave.to_i + 14
+
+    elsif next_grant_date == (start_date >> 54)
+    #4年6ヶ月後の有給付与
+      number_of_paid_leave.to_i + 16
+
+    elsif next_grant_date == (start_date >> 66)
+    #5年6ヶ月後の有給付与
+      number_of_paid_leave.to_i + 18
+
+    elsif next_grant_date == (start_date >> 78..nil)
+    #6年6ヶ月後の有給付与
+      number_of_paid_leave.to_i + 20
+    end
+  end
 end
