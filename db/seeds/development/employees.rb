@@ -31,23 +31,21 @@ addresses = %w{
   tn = 8.times.map { rand(9) }.join
 
   Employee.create!(
-    {
-      employee_number: 7.times.map { rand(8) }.join.to_s,
-      last_name: ln[0],
-      first_name: fn[0],
-      last_name_kana: ln[1],
-      first_name_kana: fn[1],
-      password: "password",
-      address: "#{ad[0]}県#{ad[1]}市#{ad[2]}町#{ad[3]}",
-      telephone_number: "012#{tn}",
-      email: "#{ln[2]}.#{fn[2]}@exam.com",
-      start_date: (181 - n).days.ago.to_date,
-      end_date: n == 7 ?  Date.today : nil,
-      suspended: n == 4,
-      next_grant_date: n <= 1 ?  (181 - n).days.ago.to_date.since(18.month) : (181 - n).days.ago.to_date.since(6.month),
-      prev_grant_date: n <= 1 ?  (181 - n).days.ago.to_date.since(6.month) : nil,
-      number_of_paid_leave: n <= 1 ?  10 : 0,
-      granted: n <= 1 ?  true : false,
-    }
+    employee_number: 7.times.map { rand(8) }.join.to_s,
+    last_name: ln[0],
+    first_name: fn[0],
+    last_name_kana: ln[1],
+    first_name_kana: fn[1],
+    password: "password",
+    address: "#{ad[0]}県#{ad[1]}市#{ad[2]}町#{ad[3]}",
+    telephone_number: "012#{tn}",
+    email: "#{ln[2]}.#{fn[2]}@exam.com",
+    start_date: (181 - n).days.ago.to_date,
+    end_date: n == 7 ?  Date.today : nil,
+    suspended: n == 4,
+    next_grant_date: n <= 1 ?  (181 - n).days.ago.to_date.since(18.month) : (181 - n).days.ago.to_date.since(6.month),
+    prev_grant_date: n <= 1 ?  (181 - n).days.ago.to_date.since(6.month) : nil,
+    number_of_paid_leave: n <= 1 ?  10 : 0,
+    granted: n <= 1 ?  true : false,
   )
 end
