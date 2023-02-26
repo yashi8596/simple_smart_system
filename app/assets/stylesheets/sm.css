@@ -2,10 +2,15 @@
   table {
     width: 100%;
   }
-
-  th,td {
+  th {
     display: block;
     text-align: left;
+    width: 100%;
+  }
+
+  td {
+    display: block;
+    text-align: center;
     width: 100%;
   }
 

@@ -9,39 +9,39 @@
     <p class="col-12 text-center">※色が付いている項目は<br class="d-xl-none d-lg-none d-md-none d-block">編集することができます。</p>
     <table class="table table-borderless mx-3">
 
-      <tr>
-        <th class="ml-auto col-5">従業員番号</th>
-        <td class="mr-auto col-5"><%= @employee.employee_number %></td>
+      <tr class="flex">
+        <th class="ml-auto col-4">従業員番号</th>
+        <td class="mr-auto col-8"><%= @employee.employee_number %></td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">従業員名</th>
-        <td class="mx-auto col-5 table-info">
+        <th class="ml-auto">従業員名</th>
+        <td class="mx-auto table-info">
           <label class="mr-auto"><%= @employee.last_name %> <%= @employee.first_name %></label>
         </td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">従業員名(カナ)</th>
-        <td class="mx-auto col-5 table-info">
+        <th class="ml-auto ">従業員名(カナ)</th>
+        <td class="mx-auto table-info">
           <label class="mr-auto"><%= @employee.last_name_kana %> <%= @employee.first_name_kana %></label>
         </td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">住所</th>
-        <td class="mr-auto col-5"><%= @employee.address %></td>
+        <th class="ml-auto">住所</th>
+        <td class="mr-auto"><%= @employee.address %></td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">電話番号</th>
-        <td class="mr-auto col-5"><%= @employee.telephone_number %></td>
+        <th class="ml-auto">電話番号</th>
+        <td class="mr-auto"><%= @employee.telephone_number %></td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">メールアドレス</th>
-        <td class="mr-auto col-5 table-info"><%= @employee.email %></td>
+        <th class="ml-auto">メールアドレス</th>
+        <td class="mr-auto table-info"><%= @employee.email %></td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">有休残日数</th>
-        <td class="mr-auto row">
-          <div class="mx-0 mb-xl-0 mb-lg-0 mb-md-0 mb-2 col-xl-5 col-lg-5 col-md-4 col-12 pt-2"><%= "#{@employee.number_of_paid_leave}日" %></div>
-          <div class="mx-0 col-xl-5 col-lg-5 col-md-8 col-12">
+        <th class="ml-auto ">有休残日数</th>
+        <td class="mx-auto row">
+          <div class="mx-0 mb-xl-0 mb-lg-0 mb-md-0 mb-2 col-xl-5 col-lg-5 col-4 pt-2"><%= "#{@employee.number_of_paid_leave}日" %></div>
+          <div class="mx-0 col-xl-5 col-lg-5 col-8">
             <%= form_with model: @employee, url: paid_leave_update_path, method: :patch do |f| %>
               <%= f.submit "有休残日数を取得する", class:"btn btn-success" %>
             <% end %>
@@ -49,8 +49,8 @@
         </td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">前回有給付与日</th>
-        <td class="mr-auto col-5">
+        <th class="ml-auto">前回有給付与日</th>
+        <td class="mr-auto">
           <% if @employee.prev_grant_date? %>
             <%= @employee.prev_grant_date.strftime("%Y年%m月%d日") %>
           <% else %>
@@ -59,20 +59,20 @@
         </td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">次回有給付与日</th>
-        <td class="mr-auto col-5"><%= @employee.next_grant_date.strftime("%Y年%m月%d日") %></td>
+        <th class="ml-auto">次回有給付与日</th>
+        <td class="mr-auto"><%= @employee.next_grant_date.strftime("%Y年%m月%d日") %></td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">パスワード</th>
-        <td class="mr-auto col-5 table-info">************</br>(パスワード保護のため、<br class="d-xl-none d-lg-none d-block">表示されません)</td>
+        <th class="ml-auto">パスワード</th>
+        <td class="mr-auto table-info">************<br class="d-xl-none d-lg-none d-block">(パスワード保護のため、表示されません)</td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">入社日</th>
-        <td class="mr-auto col-5"><%= @employee.start_date.strftime("%Y年%m月%d日") %></td>
+        <th class="ml-auto">入社日</th>
+        <td class="mr-auto"><%= @employee.start_date.strftime("%Y年%m月%d日") %></td>
       </tr>
       <tr>
-        <th class="ml-auto col-5">退職日</th>
-        <td class="mr-auto col-5">
+        <th class="ml-auto">退職日</th>
+        <td class="mr-auto">
           <% if @employee.end_date? %>
             <%= @employee.end_date.strftime("%年%m月%d日") %>
           <% else %>
