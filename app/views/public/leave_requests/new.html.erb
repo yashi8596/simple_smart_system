@@ -5,7 +5,7 @@
   </div>
 
   <div class="row my-2 mx-auto">
-    <h5 class="col-12 text-center mx-auto">「<%= Date.current.strftime("%Y年%m月%d日") %>」現在、新規有給申請は「<%= Date.current.since(10.days).strftime("%Y年%m月%d日") %>」以降で取得が可能です。</h5>
+    <h5 class="col-12 text-center mx-auto">「<strong class="text-danger"><%= Date.current.strftime("%Y年%m月%d日") %></strong>」現在、新規有給申請は「<strong class="text-danger"><%= Date.current.since(10.days).strftime("%Y年%m月%d日") %></strong>」以降で取得が可能です。</h5>
   </div>
 
   <%= form_with model: @leave_request, url: leave_requests_path, method: :post do |f| %>
@@ -13,9 +13,9 @@
     <div class="row py-3 col-11 mx-auto border border-dark rounded">
       <table class="table table-borderless">
 
-        <tr>
-          <th class="ml-auto"><%= f.label "従業員番号" %></th>
-          <td class="mr-auto">
+        <tr class="flex">
+          <th class="ml-auto col-4"><%= f.label "従業員番号" %></th>
+          <td class="mr-auto col-8 text-center">
             <%= f.hidden_field :employee_id, :value => current_employee.id %>
             <%= current_employee.id %>
           </td>
