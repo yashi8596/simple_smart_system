@@ -6,14 +6,14 @@
   </div>
 </div>
 
-<nav class="container mx-auto my-3 navbar navbar-expand-md navbar-light">
-  <button class="navbar-toggler col-12" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse mx-auto" id="navbarNavDropdown">
-    <ul class="navbar-nav row col-12 py-auto px-2 mx-auto">
+<% if current_employee %>
 
-      <% if current_employee %>
+  <nav class="container mx-auto my-3 navbar navbar-expand-md navbar-light">
+    <button class="navbar-toggler col-12" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse mx-auto" id="navbarNavDropdown">
+      <ul class="navbar-nav row col-12 py-auto px-2 mx-auto">
 
         <%= link_to root_path, class:"col-xl col-lg col-md col-sm col-12 ml-auto mr-1 my-1" do %>
           <button type="button" class="btn btn-light y-0 mx-auto col-12 border border-dark">
@@ -39,11 +39,10 @@
           </button>
         <% end %>
 
-      <% end %>
-    </ul>
-  </div>
-
-</nav>
+      </ul>
+    </div>
+  </nav>
+<% end %>
 
 <div class="container mx-auto mb-3">
   <div class="row">
