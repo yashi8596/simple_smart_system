@@ -21,6 +21,11 @@ class Admin::EmployeesController < Admin::Base
     @salary = Salary.find_by(employee_id: @employee.id, created_at: Time.current.all_month)
   end
 
+  def index
+    @search_form = Admin::EmployeeSearchForm.new(search_params)
+    @employees = @search_form.search.page(params[:page]).per(10)
+  end
+
   def edit
     @employee = Employee.find(params[:id])
   end
@@ -60,5 +65,9 @@ class Admin::EmployeesController < Admin::Base
       :first_name_kana, :password, :address, :telephone_number, :email,
       :number_of_paid_leave, :start_date, :end_date, :suspended
     )
+  end
+
+  def search_params
+    params[:search]&.try(:permit, [:last_name_kana, :first_name_kana, :employee_number])
   end
 end

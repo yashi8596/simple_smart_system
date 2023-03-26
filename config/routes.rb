@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "homes#top"
     resource :session, only:[:new, :create, :destroy]
-    resources :employees, except:[:index]
+    resources :employees
     get "employees/:id/confirm" => "employees#confirm", as: "confirm" #従業員データ物理削除時の確認用画面
     resources :salaries, except:[:destroy]
     resources :leave_requests, except:[:new, :show, :create, :destroy]

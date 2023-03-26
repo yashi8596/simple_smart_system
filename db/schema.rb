@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_13_161149) do
+ActiveRecord::Schema.define(version: 2023_03_23_221239) do
 
   create_table "admins", force: :cascade do |t|
     t.string "hashed_password", null: false
@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(version: 2023_02_13_161149) do
     t.date "prev_grant_date"
     t.date "next_grant_date", null: false
     t.boolean "granted", default: false, null: false
+    t.index ["employee_number", "last_name_kana", "first_name_kana"], name: "index_emoloyees_on_employee_number_and_furigana"
+    t.index ["employee_number"], name: "index_employees_on_employee_number"
+    t.index ["first_name_kana"], name: "index_employees_on_first_name_kana"
     t.index ["last_name_kana", "first_name_kana"], name: "index_employees_on_last_name_kana_and_first_name_kana"
   end
 
