@@ -63,7 +63,7 @@ class Admin::EmployeesController < Admin::Base
     params.require(:employee).permit(
       :employee_number, :last_name, :first_name, :last_name_kana,
       :first_name_kana, :password, :address, :telephone_number, :email,
-      :number_of_paid_leave, :start_date, :end_date, :suspended, :next_grant_date
+      :number_of_paid_leave, :start_date, :end_date, :suspended
     )
   end
 
