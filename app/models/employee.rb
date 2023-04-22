@@ -72,4 +72,8 @@ class Employee < ApplicationRecord
       number_of_paid_leave.to_i + 20
     end
   end
+
+  def employee_display
+    employee_number + '  ' + last_name + '' + first_name
+  end
 end

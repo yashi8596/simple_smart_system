@@ -11,7 +11,7 @@
         <tr>
           <th class="ml-auto"><%= f.label "従業員番号" %></th>
           <td class="mr-auto">
-            <%= f.select :employee_id, options_from_collection_for_select(Employee.all, :id, :id),  { required: true,  class:'form-control mx-auto', } %>
+            <%= f.select :employee_id, options_from_collection_for_select(Employee.all, :id, :employee_display),  { required: true,  class:'form-control mx-auto', } %>
           </td>
         </tr>
         <tr>
