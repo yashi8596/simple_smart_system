@@ -32,7 +32,6 @@ class Admin::EmployeesController < Admin::Base
 
   def update
     @employee = Employee.find(params[:id])
-
     if @employee.update(employee_params)
       flash.notice = "登録情報を更新しました。"
       redirect_to admin_employee_path
@@ -63,7 +62,8 @@ class Admin::EmployeesController < Admin::Base
     params.require(:employee).permit(
       :employee_number, :last_name, :first_name, :last_name_kana,
       :first_name_kana, :password, :address, :telephone_number, :email,
-      :number_of_paid_leave, :start_date, :end_date, :suspended
+      :number_of_paid_leave, :start_date, :end_date, :suspended,
+      :next_grant_date, :granted, :prev_grant_date
     )
   end
 
