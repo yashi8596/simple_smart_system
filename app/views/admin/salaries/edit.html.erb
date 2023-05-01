@@ -35,21 +35,14 @@
           <th class="ml-auto"><%= f.label "労働時間" %></th>
           <td class="mr-auto row">
             <%= f.text_field :total_hour, required: true, class:"form-control mx-auto col-5" %>
-            <%= f.select :total_minute, options_for_select([['00', 0.0], ['10', 0.17], ['15', 0.25], ['20', 0.33], ['30', 0.5], ['40', 0.67], ['45', 0.75], ['50', 0.83]]),{}, {class:"form-control mx-auto col-5"} %>
+            <%= f.select :total_minute, options_for_select([['00', 0.0], ['15', 0.25], ['30', 0.5], ['45', 0.75]]),{}, {class:"form-control mx-auto col-5"} %>
           </td>
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "残業時間" %></th>
           <td class="mr-auto row">
             <%= f.text_field :extra_hour, required: true, class:"form-control mx-auto col-5" %>
-            <%= f.select :extra_minute, options_for_select([['00', 0.0], ['10', 0.17], ['15', 0.25], ['20', 0.33], ['30', 0.5], ['40', 0.67], ['45', 0.75], ['50', 0.83]]),{}, {class:"form-control mx-auto col-5"} %>
-          </td>
-        </tr>
-        <tr>
-          <th class="ml-auto"><%= f.label "深夜時間" %></th>
-          <td class="mr-auto row">
-            <%= f.text_field :midnight_hour, required: true, class:"form-control mx-auto col-5" %>
-            <%= f.select :midnight_minute, options_for_select([['00', 0.0], ['10', 0.17], ['15', 0.25], ['20', 0.33], ['30', 0.5], ['40', 0.67], ['45', 0.75], ['50', 0.83]]),{}, {class:"form-control mx-auto col-5"} %>
+            <%= f.select :extra_minute, options_for_select([['00', 0.0], ['15', 0.25], ['30', 0.5], ['45', 0.75]]),{}, {class:"form-control mx-auto col-5"} %>
           </td>
         </tr>
       </table>

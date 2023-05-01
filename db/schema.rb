@@ -59,26 +59,25 @@ ActiveRecord::Schema.define(version: 2023_04_15_193443) do
     t.integer "wage", null: false
     t.integer "total_hour", null: false
     t.integer "extra_hour", default: 0, null: false
-    t.integer "midnight_hour", default: 0, null: false
     t.string "employee_id", null: false
     t.integer "used_paid_leave", default: 0, null: false
     t.integer "total_workday", null: false
     t.integer "absent", default: 0, null: false
     t.float "total_minute", default: 0.0, null: false
     t.float "extra_minute", default: 0.0, null: false
-    t.float "midnight_minute", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "time_records", force: :cascade do |t|
     t.string "employee_id", null: false
-    t.datetime "started_at", null: false
-    t.datetime "finished_at"
-    t.float "total_time", default: 0.0, null: false
-    t.float "absent_time", default: 0.0, null: false
-    t.float "extra_time", default: 0.0, null: false
-    t.float "night_time", default: 0.0, null: false
+    t.date "work_date"
+    t.time "started_at"
+    t.time "finished_at"
+    t.float "total_time"
+    t.float "absent_time"
+    t.float "extra_time"
+    t.integer "division"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
