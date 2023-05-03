@@ -32,7 +32,15 @@ class Admin::EmployeesController < Admin::Base
 
   def update
     @employee = Employee.find(params[:id])
+
     if @employee.update(employee_params)
+
+      if @employee.prev_grant_date == @employee.next_grant_date
+        @employee.next_grant_date = @employee.next_grant_date.since(1.year)
+
+        @employee.update_attribute(:next_grant_date, @employee.next_grant_date)
+      end
+
       flash.notice = "登録情報を更新しました。"
       redirect_to admin_employee_path
     else

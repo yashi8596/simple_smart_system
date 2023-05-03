@@ -71,7 +71,7 @@
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "次回有給付与日" %></th>
-          <td class="mr-auto"><%= f.date_field :next_grant_date, required: true, class:"form-control" %></td>
+          <td class="mr-auto"><%= f.label "#{@employee.next_grant_date}", class:"form-control" %></td>
         </tr>
       </table>
 

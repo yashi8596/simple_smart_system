@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     patch "leave_requests/:id/cancel" => "leave_requests#cancel_update", as: "cancel_update" #申請取り消し用
     resources :salaries, only:[:show, :index]
     resource :password, only:[:edit, :update]
-    resources :time_records, except:[:edit, :destroy]
+    resources :time_records, only:[:create, :index, :update]
   end
 
   namespace :admin do
