@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(version: 2023_04_15_193443) do
     t.date "start_date", null: false
     t.date "end_date"
     t.boolean "suspended", default: false, null: false
+    t.boolean "tr_judge", default: false, null: false
+    t.boolean "sly_judge", default: false, null: false
+    t.date "tr_date"
+    t.date "sly_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "prev_grant_date"
@@ -56,28 +60,30 @@ ActiveRecord::Schema.define(version: 2023_04_15_193443) do
   end
 
   create_table "salaries", force: :cascade do |t|
-    t.integer "wage", null: false
-    t.integer "total_hour", null: false
-    t.integer "extra_hour", default: 0, null: false
     t.string "employee_id", null: false
-    t.integer "used_paid_leave", default: 0, null: false
-    t.integer "total_workday", null: false
-    t.integer "absent", default: 0, null: false
+    t.integer "wage", null: false
+    t.integer "total_hour", default: 0, null: false
+    t.integer "extra_hour", default: 0, null: false
+    t.integer "absent_hour", default: 0, null: false
     t.float "total_minute", default: 0.0, null: false
     t.float "extra_minute", default: 0.0, null: false
+    t.float "absent_minute", default: 0.0, null: false
+    t.integer "absent_days", default: 0, null: false
+    t.integer "run_days", default: 0, null: false
+    t.integer "used_paid_leave", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "time_records", force: :cascade do |t|
     t.string "employee_id", null: false
-    t.date "work_date"
-    t.time "started_at"
-    t.time "finished_at"
-    t.float "total_time"
-    t.float "absent_time"
-    t.float "extra_time"
-    t.integer "division"
+    t.date "work_date", null: false
+    t.datetime "started_at", null: false
+    t.datetime "finished_at"
+    t.float "total_time", default: 0.0, null: false
+    t.float "absent_time", default: 0.0, null: false
+    t.float "extra_time", default: 0.0, null: false
+    t.integer "division", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

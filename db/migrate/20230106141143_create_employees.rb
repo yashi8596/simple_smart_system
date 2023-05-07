@@ -14,6 +14,10 @@ class CreateEmployees < ActiveRecord::Migration[6.1]
       t.date :start_date, null: false
       t.date :end_date
       t.boolean :suspended, null: false, default: false
+      t.boolean :tr_judge, default: false, null: false
+      t.boolean :sly_judge, default: false, null: false
+      t.date :tr_date
+      t.date :sly_date
       t.timestamps
     end
 
