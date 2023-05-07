@@ -1,0 +1,46 @@
+<% if requests.present? %>
+
+  <table class="table table-hovered">
+
+  <% unless requests == @nil_records %>
+
+    <tr>
+      <th>区分</th>
+      <th>従業員番号</th>
+      <th>従業員氏名</th>
+      <th>編集リンク</th>
+    </tr>
+
+    <% requests.each do |r| %>
+      <tr>
+        <td class="text-primary col-2"><%= r.division %></td>
+        <td class="col-3"><%= r.employee_id %></td>
+        <td class="col-4"><%= r.employee.last_name %> <%= r.employee.first_name %></td>
+        <td class="col-3"><%= link_to "編集", edit_admin_time_record_path(r.id), class:"btn btn-info col-5 mx-auto py-1" %></td>
+      </tr>
+    <% end %>
+
+  <% else %>
+
+    <tr>
+      <th>区分</th>
+      <th>従業員番号</th>
+      <th>従業員氏名</th>
+      <th>連絡先</th>
+    </tr>
+
+    <% requests.each do |r| %>
+      <tr>
+        <td class="text-danger col-2">　不明　</td>
+        <td class="col-3"><%= r.employee_number %></td>
+        <td class="col-4"><%= r.last_name %> <%= r.first_name %></td>
+        <td class="col-3"><%= r.telephone_number %></td>
+      </tr>
+    <% end %>
+
+  <% end %>
+  </table>
+
+<% else %>
+  <p class="row mx-auto text-center py-2">該当する従業員記録がありません。</p>
+<% end %>

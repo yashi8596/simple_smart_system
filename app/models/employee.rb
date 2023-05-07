@@ -2,6 +2,7 @@ class Employee < ApplicationRecord
   has_many :salaries, dependent: :destroy
   has_many :leave_requests, dependent: :destroy
   has_many :time_records, dependent: :destroy
+  has_one :judge, dependent: :destroy
 
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
 
@@ -76,5 +77,17 @@ class Employee < ApplicationRecord
 
   def employee_display
     employee_number + '  ' + last_name + '' + first_name
+  end
+
+  def tr_judge_reset #日付変更(day)によるtr_judgeのリセット
+    if (tr_date.year != Date.today.year) || (tr_date.month != Date.today.month) || (tr_date.day != Date.today.day)
+      0
+    end
+  end
+
+  def sly_judge_reset #日付変更(month)によるsly_judgeのリセット
+    if sly_date.month != Date.today.month
+      0
+    end
   end
 end

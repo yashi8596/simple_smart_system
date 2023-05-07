@@ -49,9 +49,9 @@ class Admin::SalariesController < Admin::Base
   private
   def salary_params
     params.require(:salary).permit(
-      :employee_id, :total_workday, :used_paid_leave, :absent,
+      :employee_id, :run_days, :used_paid_leave, :absent_days,
       :wage, :total_hour, :total_minute, :extra_hour, :extra_minute,
-      :midnight_hour, :midnight_minute,
+      :absent_hour, :absent_minute,
     )
   end
 end

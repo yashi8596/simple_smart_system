@@ -6,7 +6,7 @@ class Admin::EmployeesController < Admin::Base
   def create
     @employee = Employee.new(employee_params)
     @employee.next_grant_date = @employee.start_date.since(6.month)
-
+    
     if @employee.save
       flash.notice = "従業員アカウントを新規登録しました。"
       redirect_to admin_employee_path(@employee.id)

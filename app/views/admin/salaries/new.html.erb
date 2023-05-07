@@ -16,11 +16,11 @@
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "出勤日数" %></th>
-          <td class="mr-auto"><%= f.text_field :total_workday, required: true, class:"form-control" %></td>
+          <td class="mr-auto"><%= f.text_field :run_days, required: true, class:"form-control" %></td>
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "欠勤日数" %></th>
-          <td class="mr-auto"><%= f.text_field :absent, required: true, class:"form-control" %></td>
+          <td class="mr-auto"><%= f.text_field :absent_days, required: true, class:"form-control" %></td>
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "有給消化数" %></th>
@@ -45,6 +45,13 @@
           <td class="mr-auto row">
             <%= f.text_field :extra_hour, required: true, class:"form-control mx-auto col-5" %>
             <%= f.select :extra_minute, options_for_select([['00', 0.0], ['15', 0.25], ['30', 0.5], ['45', 0.75]]),{}, {class:"form-control mx-auto col-5"} %>
+          </td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "遅刻・早退時間" %></th>
+          <td class="mr-auto row">
+            <%= f.text_field :absent_hour, required: true, class:"form-control mx-auto col-5" %>
+            <%= f.select :absent_minute, options_for_select([['00', 0.0], ['15', 0.25], ['30', 0.5], ['45', 0.75]]),{}, {class:"form-control mx-auto col-5"} %>
           </td>
         </tr>
       </table>

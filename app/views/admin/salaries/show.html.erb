@@ -4,7 +4,7 @@
     <h4 class="col-12 text-center mx-auto"><%= @employee.last_name %><%= @employee.first_name %>さんの給与情報確認画面</h4>
   </div>
 
-  <div class="row py-3 col-11 mx-auto border border-dark rounded">
+  <div class="row pt-5 pb-4 col-11 mx-auto border border-dark rounded">
     <table class="table table-hovered mb-0">
 
       <tr>
@@ -20,15 +20,19 @@
       <table class="col-6 table table-hovered mb-0">
         <tr>
           <th class="ml-auto col-2">出勤日数</th>
-          <td class="mx-auto col-2"><%= @salary.total_workday %></td>
+          <td class="mx-auto col-2"><%= @salary.run_days %></td>
         </tr>
         <tr>
           <th class="ml-auto col-2">欠勤日数</th>
-          <td class="mx-auto col-2"><%= @salary.absent %></td>
+          <td class="mx-auto col-2"><%= @salary.absent_days %></td>
         </tr>
         <tr>
           <th class="ml-auto col-2">有休消化日数</th>
           <td class="mx-auto col-2"><%= @salary.used_paid_leave %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto col-2">　　　　</th>
+          <td class="mx-auto col-2">　　　　</td>
         </tr>
       </table>
       <table class="col-6 table table-hovered mb-0">
@@ -43,6 +47,10 @@
         <tr>
           <th class="ml-auto col-2">残業時間</th>
           <td class="mr-auto col-2"><%= @salary.extra_hour %>:<%= sprintf("%02d", (@salary.extra_minute * 60).round) %></td>
+        </tr>
+        <tr>
+          <th class="ml-auto col-2">遅刻・早退時間</th>
+          <td class="mr-auto col-2"><%= @salary.absent_hour %>:<%= sprintf("%02d", (@salary.absent_minute * 60).round) %></td>
         </tr>
       </table>
 

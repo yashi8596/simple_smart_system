@@ -29,6 +29,12 @@
       </button>
 
       <button type="button" class="btn btn-secondary col-5 ml-1 mr-auto my-1 py-1">
+        <%= link_to admin_time_records_path, class:"y-0 mx-auto" do %>
+          <li style="list-style: none;" class="mx-auto text-center text-white">勤怠管理一覧</li>
+        <% end %>
+      </button>
+
+      <button type="button" class="btn btn-danger col-6 mx-auto my-1 py-1">
         <%= link_to admin_session_path, class:"y-0 mx-auto", method: :delete do %>
           <li style="list-style: none;" class="mx-auto text-center text-white">ログアウト</li>
         <% end %>

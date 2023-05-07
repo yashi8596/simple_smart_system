@@ -12,18 +12,22 @@
           link_to "出勤打刻ボタン", time_records_path, method: :post,
           class:"col-xl col-lg col-md col-12 btn btn-success mx-1 my-1 py-4 rounded"
         %>
+        <button class="col-xl col-lg col-md col-12 btn btn-secondary text-white mx-1 my-1 py-4 rounded">退勤打刻ボタン</button>
+
       <% else %>
-        <button class="col-xl col-lg col-md col-12 btn btn-secondary text-white mx-1 my-1 py-4 rounded">出勤打刻ボタン</button>
+        <% if @today_record.finished_at == nil %>
+          <button class="col-xl col-lg col-md col-12 btn btn-secondary text-white mx-1 my-1 py-4 rounded">出勤打刻ボタン</button>
+          <%=
+            link_to "退勤打刻ボタン",
+            time_record_path(@today_record.id), method: :patch,
+            class:"col-xl col-lg col-md col-12 btn btn-success mx-1 my-1 py-4 rounded"
+          %>
+
+        <% else %>
+          <button class="col-xl col-lg col-md col-12 btn btn-secondary text-white mx-1 my-1 py-4 rounded">出勤打刻ボタン</button>
+          <button class="col-xl col-lg col-md col-12 btn btn-secondary text-white mx-1 my-1 py-4 rounded">退勤打刻ボタン</button>
       <% end %>
 
-      <% unless @today_record.finished_at? %>
-        <%=
-          link_to "退勤打刻ボタン",
-          time_record_path(@today_record.id), method: :patch,
-          class:"col-xl col-lg col-md col-12 btn btn-success mx-1 my-1 py-4 rounded"
-        %>
-      <% else %>
-        <button class="col-xl col-lg col-md col-12 btn btn-secondary text-white mx-1 my-1 py-4 rounded">退勤打刻ボタン</button>
       <% end %>
     </div>
 
@@ -35,6 +39,7 @@
 
           <tr>
             <th>日付</th>
+            <th>区分</th>
             <th>出勤</th>
             <th>退勤</th>
             <th>就労</th>
@@ -45,6 +50,7 @@
           <% @time_records.each do |tr| %>
             <tr>
               <td><%= tr.work_date.strftime('%-m/%-d') %></td>
+              <td><%= tr.division %></td>
               <td><%= tr.started_at.strftime('%H:%M') %></td>
               <% if tr.finished_at.present? %>
                 <td><%= tr.finished_at.strftime('%H:%M') %></td>
