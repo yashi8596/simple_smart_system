@@ -8,24 +8,24 @@
     <div class="row py-3 col-12 border border-dark rounded">
       <h5 class="col-12 text-center mx-auto">勤怠打刻フォーム</h5>
       <% unless @today_record.present? %>
-        <%=
-          link_to "出勤打刻ボタン", time_records_path, method: :post,
-          class:"col-xl col-lg col-md col-12 btn btn-success mx-1 my-1 py-4 rounded"
-        %>
-        <button class="col-xl col-lg col-md col-12 btn btn-secondary text-white mx-1 my-1 py-4 rounded">退勤打刻ボタン</button>
-
+        <div class="col mx-1 my-3 py-4 rounded">
+          <%= form_with model: @new_record, url: time_records_path, method: :post do |f| %>
+            <%= f.hidden_field :employee_id, :value => current_employee.id %>
+            <%= f.hidden_field :work_date, :value => Date.today %>
+            <%= f.hidden_field :started_at, :value => Time.new %>
+            <%= f.submit "出勤打刻ボタン", class:"btn btn-lg btn-success form-control" %>
+          <% end %>
+        </div>
       <% else %>
         <% if @today_record.finished_at == nil %>
-          <button class="col-xl col-lg col-md col-12 btn btn-secondary text-white mx-1 my-1 py-4 rounded">出勤打刻ボタン</button>
           <%=
             link_to "退勤打刻ボタン",
             time_record_path(@today_record.id), method: :patch,
-            class:"col-xl col-lg col-md col-12 btn btn-success mx-1 my-1 py-4 rounded"
+            class:"col-xl col-lg col-md col-12 btn btn-lg btn-success mx-1 my-1 py-4 rounded"
           %>
 
         <% else %>
-          <button class="col-xl col-lg col-md col-12 btn btn-secondary text-white mx-1 my-1 py-4 rounded">出勤打刻ボタン</button>
-          <button class="col-xl col-lg col-md col-12 btn btn-secondary text-white mx-1 my-1 py-4 rounded">退勤打刻ボタン</button>
+          <p class="col-12 text-center">本日の勤怠打刻は完了しています。<br class="d-xl-none d-lg-none d-md-none d-block">お疲れ様でした。</p>
       <% end %>
 
       <% end %>

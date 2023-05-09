@@ -22,11 +22,11 @@
         </thead>
 
         <tr class="text-center">
-          <td class="col-2"><%= @salary.total_workday %></td>
+          <td class="col-2"><%= @salary.run_days %></td>
           <td class="col-2"><%= @salary.total_hour %>:<%= sprintf("%02d", (@salary.total_minute * 60).round) %></td>
           <td class="col-2"><%= @salary.extra_hour %>:<%= sprintf("%02d", (@salary.extra_minute * 60).round) %></td>
           <td class="col-2"><%= @salary.used_paid_leave %></td>
-          <td class="col-2"><%= @salary.absent %></td>
+          <td class="col-2"><%= @salary.absent_days %></td>
         </tr>
       </table>
 

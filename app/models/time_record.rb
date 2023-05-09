@@ -1,6 +1,8 @@
 class TimeRecord < ApplicationRecord
-  belongs_to :employee
-  belongs_to :salary
+  belongs_to :employee, optional: true
+  belongs_to :salary, optional: true
+  # nilを許可するためにbelongs_toに「optional: true」を記述
+
   alias_attribute :employee_number, :employee_id
 
   enum division: {出勤: 1, 有給: 2, 欠勤: 3, 休日出勤: 4 } #記録の管理区分

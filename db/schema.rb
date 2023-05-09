@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2023_04_15_193443) do
 
   create_table "time_records", force: :cascade do |t|
     t.string "employee_id", null: false
+    t.integer "salary_id", null: false
     t.date "work_date", null: false
     t.datetime "started_at", null: false
     t.datetime "finished_at"

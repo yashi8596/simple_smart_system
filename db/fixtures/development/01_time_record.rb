@@ -1,6 +1,7 @@
 TimeRecord.seed do |s|
   s.id = 1
   s.employee_id = "0000001"
+  s.salary_id = 1
   s.work_date = Date.new(2023, 5, 5)
   s.started_at = DateTime.new(2023, 5, 4, 22, 43, 0)
   s.finished_at = DateTime.new(2023, 5, 5, 11, 32, 0)
