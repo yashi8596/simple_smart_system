@@ -18,14 +18,17 @@
 企業とその従業員になります。
 
 ### 主な利用シーン
-・有給休暇等の申請
-・給与明細や申請の詳細等の確認
+- 有給休暇等の申請
+- 給与明細や申請の詳細等の確認
 
 ### 実装機能リストのURL
 https://docs.google.com/spreadsheets/d/1V7bnSpySKBEqy-Rqk6dNe2nc4cILwUayQE-KEaYZ6H0/edit?usp=sharing
 
 ## 設計書
-<...>
+- テーブル定義書：https://docs.google.com/spreadsheets/d/14u5r_WDmXX_8jesnlfLAacn-VUVC3EmluaYdKpb5adk/edit?usp=sharing
+- ER図：https://drive.google.com/file/d/1jvCasMkUgbLp_hILiJG8DjQkI2leYIVF/view?usp=share_link
+- アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1ISl3NItapsgyD3BYOdlWSOShWkcUn-J7mgX3pJ0__HE/edit?usp=share_link
+
 
 ## 開発環境
 - OS：Linux(CentOS)
