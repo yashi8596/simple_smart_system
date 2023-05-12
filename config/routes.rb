@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resource :session, only:[:new, :create, :destroy]
     resource :employee, only:[:edit, :update]
     patch "employee/paid_leave_update" => "employees#paid_leave_update", as: "paid_leave_update" #有給残日数の更新
-    resources :leave_requests, except:[:index, :destroy]
+    resources :leave_requests, except:[:edit, :update, :index, :destroy]
     get "leave_requests/:id/cancel" => "leave_requests#cancel", as: "cancel"
     patch "leave_requests/:id/cancel" => "leave_requests#cancel_update", as: "cancel_update" #申請取り消し用
     resources :salaries, only:[:show, :index]
