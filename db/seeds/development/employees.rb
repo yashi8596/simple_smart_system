@@ -31,7 +31,7 @@ addresses = %w{
   tn = 8.times.map { rand(9) }.join
 
   Employee.create!(
-    employee_number: 7.times.map { rand(8) }.join.to_s,
+    employee_number: n >= 10 ?  "00#{n}0#{n}" : "0000#{n}0#{n}",
     last_name: ln[0],
     first_name: fn[0],
     last_name_kana: ln[1],
