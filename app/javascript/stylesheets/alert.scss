@@ -1,0 +1,13 @@
+$red: #cc0000;
+$pink: #ffcccc;
+
+
+.field_with_errors {
+  display: inline;
+  input {
+    @extend .is-invalid;
+    background-color: $pink;
+  }
+}
+
+

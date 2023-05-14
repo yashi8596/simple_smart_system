@@ -10,7 +10,7 @@
       <table class="table table-borderless col-6">
         <tr>
           <th class="ml-auto"><%= f.label "従業員番号" %></th>
-          <td class="mr-auto"><%= f.text_field :employee_number, required: true, class:"form-control" %></td>
+          <td class="mr-auto"><%= f.label @salary.employee_id %></td>
         </tr>
         <tr>
           <th class="ml-auto"><%= f.label "出勤日数" %></th>
@@ -43,6 +43,13 @@
           <td class="mr-auto row">
             <%= f.text_field :extra_hour, required: true, class:"form-control mx-auto col-5" %>
             <%= f.select :extra_minute, options_for_select([['00', 0.0], ['15', 0.25], ['30', 0.5], ['45', 0.75]]),{}, {class:"form-control mx-auto col-5"} %>
+          </td>
+        </tr>
+        <tr>
+          <th class="ml-auto"><%= f.label "遅刻・早退" %></th>
+          <td class="mr-auto row">
+            <%= f.text_field :absent_hour, required: true, class:"form-control mx-auto col-5" %>
+            <%= f.select :absent_minute, options_for_select([['00', 0.0], ['15', 0.25], ['30', 0.5], ['45', 0.75]]),{}, {class:"form-control mx-auto col-5"} %>
           </td>
         </tr>
       </table>

@@ -29,6 +29,12 @@ class Admin::SalariesController < Admin::Base
   def show
     @salary = Salary.find(params[:id])
     @employee = Employee.find_by(employee_number: @salary.employee_id)
+    @time_records = TimeRecord.where(employee_number: @salary.employee_id, salary_id: @salary.id)
+
+    @total = @salary.total_hour + @salary.total_minute
+    @extra = @salary.extra_hour + @salary.extra_minute
+    @absent = @salary.absent_hour + @salary.absent_minute
+
   end
 
   def edit
