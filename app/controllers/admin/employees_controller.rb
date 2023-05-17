@@ -51,11 +51,6 @@ class Admin::EmployeesController < Admin::Base
 
       @errors = e.record.errors.full_messages
 
-    rescue ActiveRecord::RecordNotUnique
-
-      @message = "入力された従業員番号は既に使用されています。"
-
-binding.pry
     flash.now.alert = "入力項目に誤りがあります。再度更新を行ってください。"
     render action: "edit"
     end
