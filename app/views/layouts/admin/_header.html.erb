@@ -46,6 +46,23 @@
 <div class="container mx-auto mb-3">
   <div class="row">
     <%= content_tag(:span, flash.notice, class: "col-12 notice bg-info text-center text-white py-3 rounded") if flash.notice %>
-    <%= content_tag(:span, flash.alert, class: "col-12 alert bg-danger text-center text-white") if flash.alert %>
+    <% if flash.alert %>
+      <div class="col-12 row alert bg-danger">
+        <%= content_tag(:span, flash.alert, class: "mx-auto col-12 text-center text-white") %>
+        <% if @errors || @message %>
+          <ul class="mx-auto">
+            <% if @message %>
+              <li class="text-white"><%= @message %></li>
+            <% end %>
+            <% if @errors %>
+              <% @errors.each do |m| %>
+                <li class="text-white"><%= m %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+
   </div>
 </div>

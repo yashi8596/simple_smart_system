@@ -6,7 +6,7 @@ class Admin::EmployeesController < Admin::Base
   def create
     @employee = Employee.new(employee_params)
     @employee.next_grant_date = @employee.start_date.since(6.month)
-    
+
     if @employee.save
       flash.notice = "従業員アカウントを新規登録しました。"
       redirect_to admin_employee_path(@employee.id)
@@ -33,19 +33,31 @@ class Admin::EmployeesController < Admin::Base
   def update
     @employee = Employee.find(params[:id])
 
-    if @employee.update(employee_params)
+    begin
 
-      if @employee.prev_grant_date == @employee.next_grant_date
-        @employee.next_grant_date = @employee.next_grant_date.since(1.year)
+      if @employee.update!(employee_params)
 
-        @employee.update_attribute(:next_grant_date, @employee.next_grant_date)
+        if @employee.prev_grant_date == @employee.next_grant_date
+          @employee.next_grant_date = @employee.next_grant_date.since(1.year)
+
+          @employee.update_attribute(:next_grant_date, @employee.next_grant_date)
+        end
+
+        flash.notice = "登録情報を更新しました。"
+        redirect_to admin_employee_path
       end
 
-      flash.notice = "登録情報を更新しました。"
-      redirect_to admin_employee_path
-    else
-      flash.now.alert = "入力項目に誤りがあります。再度更新を行ってください。"
-      render action: "edit"
+    rescue ActiveRecord::RecordInvalid => e
+
+      @errors = e.record.errors.full_messages
+
+    rescue ActiveRecord::RecordNotUnique
+
+      @message = "入力された従業員番号は既に使用されています。"
+
+binding.pry
+    flash.now.alert = "入力項目に誤りがあります。再度更新を行ってください。"
+    render action: "edit"
     end
   end
 

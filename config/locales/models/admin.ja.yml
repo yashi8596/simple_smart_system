@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    attributes:
+      employee:
+        employee_number: 従業員番号
+        last_name: 姓
+        first_name: 名
+        last_name_kana: 姓(カナ)
+        first_name_kana: 名(メイ)
+        address: 住所
+        telephone_number: 電話番号
+        email: メールアドレス
+        number_of_paid_leave: 有給残り日数
+        start_date: 就業開始日
+        end_date: 退職予定日
+        prev_grant_date: 前回有給取得日時
+        next_grant_date: 次回有給取得予定日
+    errors:
+      models:
+        employee:
+          attributes:
+            employee_number:
+              taken: が他の従業員と重複しています。
+            start_date:
+              after_or_equal_to: には2000年1月1日以降の日付を指定してください。
+              before: には1年後の日付より前の日付を指定してください。
+            end_date:
+              after_or_equal_to: には2000年1月1日以降の日付を指定してください。
+              before: には1年後の日付より前の日付を指定してください。
+              after: には開始日より後の日付を指定してください。
