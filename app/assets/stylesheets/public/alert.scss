@@ -1,0 +1,13 @@
+$red: #cc0000;
+$pink: #ffcccc;
+
+
+div.field_with_errors {
+  display: inline;
+  label { color: $red; }
+  input {
+    background-color: $pink;
+  }
+}
+
+
