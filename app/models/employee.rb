@@ -17,7 +17,7 @@ class Employee < ApplicationRecord
     before: -> (obj) { 1.year.from_now.to_date },
     allow_blank: true
   }
-  validates :employee_number, length: { is: 7 }
+  validates :employee_number, length: { is: 7 }, uniqueness: true
 
   def password=(raw_password)
     #登録時に入力された平文のパスワードをハッシュ化してhashed_passwordカラムにセットする

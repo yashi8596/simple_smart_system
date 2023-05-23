@@ -61,18 +61,20 @@
           <th class="ml-auto"><%= f.label "停止ステータス" %></th>
           <td><%= f.check_box :suspended, class:"form-control mx-auto col-1" %></td>
         </tr>
-        <tr>
-          <th class="ml-auto"><%= f.label "有給残日数" %></th>
-          <td class="mr-auto"><%= f.text_field :number_of_paid_leave, required: true, class:"form-control" %></td>
-        </tr>
-        <tr>
-          <th class="ml-auto"><%= f.label "前回有給付与日" %></th>
-          <td class="mr-auto"><%= f.date_field :prev_grant_date, class:"form-control" %></td>
-        </tr>
-        <tr>
-          <th class="ml-auto"><%= f.label "次回有給付与日" %></th>
-          <td class="mr-auto"><%= f.label "#{@employee.next_grant_date}", class:"form-control" %></td>
-        </tr>
+        <% if (@employee.start_date >> 6) <= Date.today %>
+          <tr>
+            <th class="ml-auto"><%= f.label "有給残日数" %></th>
+            <td class="mr-auto"><%= f.text_field :number_of_paid_leave, required: true, class:"form-control" %></td>
+          </tr>
+          <tr>
+            <th class="ml-auto"><%= f.label "前回有給付与日" %></th>
+            <td class="mr-auto"><%= f.date_field :prev_grant_date, class:"form-control" %></td>
+          </tr>
+          <tr>
+            <th class="ml-auto"><%= f.label "次回有給付与日" %></th>
+            <td class="mr-auto"><%= f.label "#{@employee.next_grant_date}", class:"form-control" %></td>
+          </tr>
+        <% end %>
       </table>
 
       <div class="row py-2 col-11 mx-auto">

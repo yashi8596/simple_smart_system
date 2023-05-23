@@ -32,19 +32,25 @@ class Admin::EmployeesController < Admin::Base
 
   def update
     @employee = Employee.find(params[:id])
+    emp_was = @employee.id_in_database
 
     begin
 
       if @employee.update!(employee_params)
 
-        if @employee.prev_grant_date == @employee.next_grant_date
-          @employee.next_grant_date = @employee.next_grant_date.since(1.year)
+        if @employee.saved_change_to_prev_grant_date?
+          @employee.update_attribute(:next_grant_date, @employee.prev_grant_date >> 12)
+        end
 
-          @employee.update_attribute(:next_grant_date, @employee.next_grant_date)
+        if @employee.saved_change_to_employee_number?
+          #従業員番号が変更された場合、関連付けられているレコードを一括更新する
+          LeaveRequest.where(employee_id: emp_was).update_all(employee_id: @employee.id)
+          TimeRecord.where(employee_id: emp_was).update_all(employee_id: @employee.id)
+          Salary.where(employee_id: emp_was).update_all(employee_id: @employee.id)
         end
 
         flash.notice = "登録情報を更新しました。"
-        redirect_to admin_employee_path
+        redirect_to admin_employee_path(@employee.id)
       end
 
     rescue ActiveRecord::RecordInvalid => e
