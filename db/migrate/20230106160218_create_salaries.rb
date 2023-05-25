@@ -12,6 +12,8 @@ class CreateSalaries < ActiveRecord::Migration[6.1]
       t.integer :absent_days, default: 0, null: false
       t.integer :run_days, default: 0, null: false
       t.integer :used_paid_leave, default: 0, null: false
+      t.integer :range_year, null: false
+      t.integer :range_month, null: false
       t.timestamps
     end
   end

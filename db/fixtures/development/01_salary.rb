@@ -11,4 +11,6 @@ Salary.seed do |s|
   s.absent_days = 0
   s.run_days = 0
   s.used_paid_leave = 0
+  s.range_year = 2023
+  s.range_month = 5
 end

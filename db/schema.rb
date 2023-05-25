@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2023_04_15_193443) do
     t.integer "absent_days", default: 0, null: false
     t.integer "run_days", default: 0, null: false
     t.integer "used_paid_leave", default: 0, null: false
+    t.integer "range_year", null: false
+    t.integer "range_month", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

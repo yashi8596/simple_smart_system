@@ -35,7 +35,6 @@ class Public::TimeRecordsController < Public::Base
 
 
     @new_record.salary_id = salary.id
-    binding.pry
 
     if @new_record.save && judge.save
 

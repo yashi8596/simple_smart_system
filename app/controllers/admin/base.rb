@@ -50,6 +50,7 @@ class Admin::Base < ApplicationController
     if leave_requests
       leave_requests.each do |lr|
         if lr.auto_destroy
+          #Salary.where("employee_id = ? and range_year = ? and range_month = ?", lr.employee_id, lr.preferred_date.year, lr.preferred_date.month)
           lr.destroy
         end
       end

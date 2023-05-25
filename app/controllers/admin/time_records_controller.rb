@@ -12,8 +12,7 @@ class Admin::TimeRecordsController < Admin::Base
 
   def update
     @time_record = TimeRecord.find(params[:id])
-    
-    
+
     if @time_record.update(tr_params)
       flash.notice = "勤怠記録情報を更新しました。"
       redirect_to admin_time_records_path

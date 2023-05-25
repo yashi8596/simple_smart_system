@@ -21,6 +21,10 @@ class Salary < ApplicationRecord
     calc_basic + calc_extra  + calc_leave
   end
 
+  def set_wage
+    1500
+  end
+
   def set_limit #締め日の設定(ここでは月末とする)
     created_at.end_of_month
   end
