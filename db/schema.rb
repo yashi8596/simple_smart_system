@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_15_193443) do
+ActiveRecord::Schema.define(version: 2023_03_23_221239) do
 
   create_table "admins", force: :cascade do |t|
     t.string "hashed_password", null: false
@@ -73,20 +73,6 @@ ActiveRecord::Schema.define(version: 2023_04_15_193443) do
     t.integer "used_paid_leave", default: 0, null: false
     t.integer "range_year", null: false
     t.integer "range_month", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "time_records", force: :cascade do |t|
-    t.string "employee_id", null: false
-    t.integer "salary_id", null: false
-    t.date "work_date", null: false
-    t.datetime "started_at", null: false
-    t.datetime "finished_at"
-    t.float "total_time", default: 0.0, null: false
-    t.float "absent_time", default: 0.0, null: false
-    t.float "extra_time", default: 0.0, null: false
-    t.integer "division", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

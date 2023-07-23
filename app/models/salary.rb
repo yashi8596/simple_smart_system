@@ -1,6 +1,5 @@
 class Salary < ApplicationRecord
   belongs_to :employee
-  has_many :time_records, dependent: :destroy
   alias_attribute :employee_number, :employee_id
 
   validates :wage, :total_hour, :extra_hour, :total_minute, :extra_minute, :employee_number, :used_paid_leave, :run_days, :absent_days, presence: true

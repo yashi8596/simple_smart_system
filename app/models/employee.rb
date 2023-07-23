@@ -1,7 +1,6 @@
 class Employee < ApplicationRecord
   has_many :salaries, dependent: :destroy
   has_many :leave_requests, dependent: :destroy
-  has_many :time_records, dependent: :destroy
 
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
 

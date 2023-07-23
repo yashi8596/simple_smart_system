@@ -45,7 +45,6 @@ class Admin::EmployeesController < Admin::Base
         if @employee.saved_change_to_employee_number?
           #従業員番号が変更された場合、関連付けられているレコードを一括更新する
           LeaveRequest.where(employee_id: emp_was).update_all(employee_id: @employee.id)
-          TimeRecord.where(employee_id: emp_was).update_all(employee_id: @employee.id)
           Salary.where(employee_id: emp_was).update_all(employee_id: @employee.id)
         end
 
